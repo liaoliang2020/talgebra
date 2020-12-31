@@ -1,0 +1,15 @@
+@article{liao2020generalized,
+  title={Generalized visual information analysis via tensorial algebra},
+  author={Liao, Liang and Maybank, Stephen John},
+  journal={Journal of Mathematical Imaging and Vision},
+  pages={560--584},
+  year={2020},
+  publisher={Springer}
+}
+
+@article{liao2020general,
+  title={General Data Analytics With Applications To Visual Information Analysis: A Provable Backward-Compatible Semisimple Paradigm Over T-Algebra},
+  author={Liao, Liang and Maybank, Stephen John},
+  journal={arXiv preprint arXiv:2011.00307},
+  year={2020}
+}

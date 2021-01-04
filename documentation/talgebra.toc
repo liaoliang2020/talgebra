@@ -1,0 +1,10 @@
+\contentsline {section}{\tocsection {}{1}{Introduction}}{1}%
+\contentsline {section}{\tocsection {}{2}{Examples}}{2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{{\color {blue}\sc t-scalar product}: {\color {blue}tproduct}}}{2}%
+\contentsline {paragraph}{\tocparagraph {}{}{\color {blue}\sc Multi-way Fourier Transform and Inverse Transform}}{6}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{{\color {blue} \sc Fourier Matrix}: {\color {blue}fourier\_matrix}}}{7}%
+\contentsline {subsection}{\tocsubsection {}{2.3}{{\color {blue} \sc Inverse Fourier Matrix}: {\color {blue}ifourier\_matrix}}}{8}%
+\contentsline {subsection}{\tocsubsection {}{2.4}{{\color {blue} \sc Identity T-scalar}: {\color {blue}E\_T}}}{8}%
+\contentsline {subsection}{\tocsubsection {}{2.5}{{\color {blue} \sc Zero T-scalar}: {\color {blue}Z\_T}}}{9}%
+\contentsline {subsection}{\tocsubsection {}{2.6}{{\color {blue} \sc pseudo-inverse of a t-sclaar}: {\color {blue}tpinv\_tscalar}}}{10}%
+\contentsline {section}{\tocsection {}{}{References}}{11}%

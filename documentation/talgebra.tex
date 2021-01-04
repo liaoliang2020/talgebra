@@ -1,0 +1,844 @@
+\documentclass[12pt,reqno]{amsart}
+
+\usepackage{courier}
+\usepackage{listings}
+
+
+\usepackage{listings}
+
+
+
+\usepackage{tcolorbox}
+
+\usepackage{tcolorbox}
+
+
+
+%\usepackage{palatino}
+
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+
+\usepackage{caption}
+\captionsetup{justification=centering}
+%\usepackage{booktabs,dcolumn}
+
+%\usepackage[table]{xcolor}
+%\usepackage{boldline} 
+\usepackage{arydshln}
+
+\usepackage{multirow}
+
+
+\usepackage{colortbl}
+
+
+%\headheight=7pt 
+\headheight=10pt        
+\topmargin=14pt
+%\topmargin=28pt
+\textwidth=445pt
+%\textheight=574pt   
+%\textheight=536pt    
+\oddsidemargin=20pt     
+\evensidemargin=20pt
+\parskip   5pt 
+
+
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{mathtools}
+
+
+\usepackage{lipsum}
+\usepackage{color}
+
+
+
+
+
+%----------------
+%\theoremstyle{plain}
+\theoremstyle{definition}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remarks}[theorem]{Remark}
+
+
+
+\definecolor{mylightgray}{rgb}{0.9, 0.9, 0.9}
+
+
+
+%\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{conjecture}[theorem]{Conjecture}
+%\newtheorem{principle}[theorem]{Principle}
+%\newtheorem{claim}[theorem]{Claim}
+
+
+\newcommand{\mymu}{\tau}
+
+
+
+%\newcommand{\myK}{\raisebox{0.06em}{\scalebox{0.90}{$\prod_{n=1}^{N}$}}  I_n}
+
+\newcommand{\myK}{I_1\times \cdots \times I_N}
+
+%\newcommand{\myK}{I_1\cdot \dots \cdot I_N }
+
+
+\newcommand{\staralgebra}{\raisebox{-0.1em}{*}-algebra}
+\newcommand\myconj[1]{ {#1}^{\raisebox{0.05em}{$*$} }_T }
+
+
+\newcommand\myperp[1]{ {#1}^{\raisebox{0.05em}{\scalebox{0.7}{$\perp$}} }_T }
+
+\newcommand\myQ[1]{Q_{T, \,#1}}
+
+
+%\linespread{1.11}
+
+%\linespread{1.18}
+
+%\linespread{1.14}
+
+\linespread{1.05}
+
+%\thispagestyle{empty}
+%\thispagestyle{headings}
+
+
+\begin{document}
+
+\title[T-Algebra and A Matrix Paradigm over T-Algebra]
+{T-Algebra: An Implementation of Matrix Paradigm/Package over A Novel Semisimple Commutative Algebra 
+} 
+
+\author[Liang Liao, Stephen John Maybank and Shen Lin]{Liang Liao, 
+Stephen John Maybank and Shen Lin \vspace{0.5em}\\
+liaoliangis@126.com (L. Liao), \\
+sjmaybank@dcs.bbk.ac.uk (S. J. Mayabnk),~ 
+lins16@126.com
+}
+
+
+
+
+
+%\begin{abstract}  
+%We consider a novel backward-compatible paradigm of general data analytics over a recently-reported semisimple algebra called t-algebra. We study the generalized matrix framework over the t-algebra by representing the elements of t-algebra by fixed-sized multi-way arrays of complex numbers and the algebraic modules over the t-algebra by a finite number of direct-product factors. Over the t-algebra, many algorithms are generalized in a straightforward manner using this new semisimple paradigm. To demonstrate the new paradigm's performance and its backward-compatibility, we generalize some canonical algorithms for visual pattern analysis. Experiments on public datasets show that the generalized algorithms compare favorably with their canonical counterparts.
+%\end{abstract}
+
+
+\maketitle
+
+
+
+%\clearpage
+\tableofcontents
+
+
+%\listoffigures
+
+
+
+
+
+\section{Introduction}
+\label{section:Introduction}
+
+%\subsection{Motivation}
+
+In the big-data deluge era, the canonical matrix and tensor paradigm over an algebraically closed field plays an essential role in many areas, including but not limited to machine learning, computer vision, pattern analysis, and statistic inference. Under the canonical matrix and tensor paradigm, observed data are given in the form of high-order arrays of canonical scalars (i.e., real or complex numbers).
+For example, an RGB image is a real number array of order three, two orders for the image's spatial measures, and a third for the image's spectral measures. An RGB image is also said to have three modes or three-way. A color video sequence of images is of order four, with three orders for spatial-spectral measures and the fourth-order chronological tempo.
+
+
+Therefore, it is a natural question of whether there exists an extension of the field $\mathbb{C}$ over which a generalized matrix and tensor paradigm can be established and backward-compatible to the canonical paradigm over a field. Fortunately, the answer is yes, but one had to sacrifice at least one of the axioms of a field to obtain something extended. 
+
+
+Among these efforts trying to generalizing the field of complex numbers, well-known is  Hamilton's $\mathbb{H}$
+of quaternions, which, up to isomorphism, is a real division subalgebra of the matrix algebra $M_2(\mathbb{C})$ \cite{hamilton1848xi,history,hilgert2011structure}. However, the multiplication of quaternions is not commutative. 
+
+
+Most hypercomplex number systems, including Hamilton's quaternions, are all subalgebras of Clifford algebra, and the fruits of generating complex numbers to obtain something extended. However, Clifford algebra's hypercomplex number systems are not suitable for general data analytics partially because they are either non-commutative or incompatible with many canonical notions such as euclidean norms. These hypercomplex number systems so far only find narrow niches in geometry and geometry-related branches of physics and computer sciences \cite{hestenes2003reforming,ablamowicz2004lectures}.
+
+
+
+
+
+\section{Examples}
+
+
+%\lstdefinestyle{customc}{
+%  belowcaptionskip=1\baselineskip,
+%  breaklines=true,
+%  frame=L,
+%  xleftmargin=\2pt,
+%  language=matlab,
+%  showstringspaces=true,
+%  basicstyle=\scriptsize\ttfamily,
+%  keywordstyle=\bfseries\color{red},
+%  commentstyle=\bfseries\color{purple!40!black},
+%  identifierstyle=\color{blue},
+%  stringstyle=\color{orange},
+%}
+%
+%\lstset{escapechar=@,style=customc}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    %basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=t,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\renewcommand{\lstlistingname}{function}
+
+A matrix over $C$ is called a tmatrix. In this article, its canonical counterpart over complex numbers is called a ``canonical matrix,'' or just a ``matrix.''  
+
+The matrix paradigm over t-algebra $C$ generalizes many notions of canonical matrices over complex numbers. 
+In the following, we show how to use these t-matrix generalizations with the their MATLAB implementations.
+
+
+\subsection{{\color{blue}\sc t-scalar product}: {\color{blue}tproduct}}
+The following function {\tt tproduct} computes the t-scalar product of two t-scalars {\tt tscalar01} and {\tt tscalar02}. 
+
+
+The multi-way circular convolution can compute the product of two scalars in the spatial domain. The product can be equivalently obtained in the Fourier domain by the Hadamard product.  The computation in the Fourier domain is more efficient and is adopted in the following function 
+{\tt tproduct}.  
+
+
+\begin{lstlisting}[language=MATLAB, caption={\bf tproduct.m}{:\hspace{0.5em}} t-scalar product of two sclalars, label=codesnippet004] 
+function result = tproduct(tscalar01, tscalar02)
+	%This function computes the product of two t-scalars
+	assert(isequal(size(tscalar01), size(tscalar02)));
+	
+	%T-scalar product computed in the fourier domain by the 
+	%Hadamard product 
+	result = ifftn(fftn(tscalar01) .* fftn(tscalar02));	
+end
+\end{lstlisting} 
+
+
+
+%\begin{mdframed}[innerbottommargin=0.1cm,innertopmargin=0.1cm,backgroundcolor=yellow!60]
+%\noindent{}syntax:   \tt C = tproduct(A, B)
+%\begin{verbatim}
+%C = tproduct(A, B)
+%\end{verbatim}
+%\end{mdframed}
+
+
+
+
+
+
+%\global\mdfapptodefinestyle{exampledefault}{
+%topline=tue,bottomline=true}
+%\begin{mdframed}[style=exampledefault,frametitle={Inhomogeneous linear}]
+%ExampleText
+%\end{mdframed}
+
+
+
+
+
+The input arguments {\tt tscalar01} and {\tt tscalar02} are complex arrays of the same shape.  
+The line confirms their shapes (i.e., ``{\tt size}'' by the MATLAB colloquialism) are identical. 
+
+In line $4$, multi-way Fourier transform {\tt fftn} and its inverse transform {\tt ifftn} are invoked. The multi-way Fourier transform and its inverse transform can be equivalently computed by MATLAB's single-way Fourier transform {\tt fft} and is demonstrated as follows. 
+
+\begin{lstlisting}[language=MATLAB, caption={Demo: multi-way Fourier transform {\tt fftn} implemented by single-way Fourier transforms {\tt fft} }] 
+function fourier_transformed_tscalar = fftn(tscalar)
+	assert(isnumeric(tscalar));
+	number_of_index_axes = ndims(tscalar); 		
+	%Compute single-way fourier transform along each index axis. 
+	fourier_transformed_tscalar = tscalar;
+	for i = 1: number_of_index_axes
+		fourier_transformed_tscalar = fft(fourier_transformed_tscalar, [], i);
+	end
+end
+\end{lstlisting} 
+
+
+Similarly, the multi-way inverse transform {\tt ifftn} is computed by single-way inverse transforms {\tt ifft} along different axes as follows.  
+
+
+\begin{lstlisting}[language=MATLAB, caption={Demo: multi-way inverse Fourier transform {\tt ifftn} implemented by single-way Fourier transforms {\tt ifft} }]
+function tscalar = ifftn(fourier_transformed_tscalar)
+	assert(isnumeric(fourier_transformed_tscalar));
+	number_of_index_axes = ndims(fourier_transformed_tscalar); 		
+	%Compute single-way inverse fourier transform along each index axis. 
+	tscalar = fourier_transformed_tscalar;
+	for i = 1: number_of_index_axes
+		tscalar = fft(tscalar, [], i);
+	end	
+end
+\end{lstlisting} 
+
+
+%\global\mdfdefinestyle{exampledefault}{%
+%linecolor=blue,linewidth=2pt,%
+%leftmargin=1cm,rightmargin=1cm
+%}
+
+
+%\begin{mdframed}[style=exampledefault, %frametitle={syntax}
+%]
+%\end{mdframed}
+
+%\noindent{}{\small\sc Syntax}~ \vspace{-1.5em} \\
+%\hspace{-4em}\rule[-10pt]{\textwidth}{0.05em}
+%\begin{verbatim}
+%C = tproduct(A, B)
+%\end{verbatim}
+
+
+%\begin{verbatim}[colback=white,colframe=white,title={\color{red} \sc syntax}]
+
+
+\noindent
+{\color{red} \sc syntax}
+
+\begin{verbatim}
+C = tproduct(A, B)
+\end{verbatim}
+
+
+
+
+
+
+%\noindent{}{\small\sc Description}~\vspace{-1.5em}\\
+%\hspace{-4em}\rule[-10pt]{\textwidth}{0.05em} ~\vspace{0.5em}\\
+%\hspace{1em}
+%{\tt{}C = tproduct(A, B)} returns the t-scalar product of the two t-scalars A and B.
+%The arguments A and B are numerical arrays in the same size. 
+%
+%The obtained numeric array C is with the size same to those of A and B.  
+
+
+%\begin{tcolorbox}[colback=white,colframe=white,title={\color{red} \sc description}]
+%\end{tcolorbox}
+
+\noindent
+{\color{red} \sc description}
+
+{\tt{}C = tproduct(A, B)} returns the t-scalar product of the two t-scalars {\tt A} and {\tt B}.
+The arguments {\tt A} and {\tt B} and the returned result {\tt C} are all numerical arrays of the same size. 
+
+
+
+
+%\begin{tcolorbox}[
+%left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,
+%boxrule=0mm,
+%coltitle=black,
+%colframe=blue!45!white,
+%colback=almond,
+%%opacityback=0.5,
+%width=(#1),before=\hfill,after=\hfill
+%]
+%ssssssssssss
+%\end{tcolorbox}
+
+
+
+
+%\noindent{}{\small\sc Examples}~ \vspace{-0.8em} \\
+%%\hspace{-4em}\rule[-10pt]{\textwidth}{0.05em}
+%\begin{mdframed}[style=exampledefault, %frametitle={syntax}
+%]
+%\begin{verbatim}
+%A = [1 1 1 1];
+%B = [2 2 2 2];
+%C = tproduct(A,B)
+%C =
+%
+%     8     8     8     8
+%\end{verbatim}
+%
+%\end{mdframed}
+
+
+
+%\begin{tcolorbox}[colback=white,colframe=white,title={\color{red} \sc examples}]
+
+\noindent
+{\color{red} \sc examples}
+
+\begin{verbatim}
+>> A = [1 1 1 1];
+>> B = [2 2 2 2];
+>> C = tproduct(A,B)
+C =
+     8     8     8     8
+
+\end{verbatim}
+%%---------
+%\vspace{-2.5em}
+%{\color{yellow}\rule[-10pt]{\textwidth}{0.05em}}
+%\vspace{1em}
+%%-----------
+
+\begin{verbatim}
+%--------------------------------------------
+% When A and B are two 3*3 random real arrays 
+>> A = rand(3)
+A =
+    0.4984    0.5853    0.2551
+    0.9597    0.2238    0.5060
+    0.3404    0.7513    0.6991
+
+>> B = rand(3)
+B =
+    0.8909    0.1386    0.8407
+    0.9593    0.1493    0.2543
+    0.5472    0.2575    0.8143
+    
+>> C = tproduct(A, B)
+C =
+    2.4311    2.5358    2.7127
+    2.7564    2.5265    2.6006
+    2.8999    2.4472    2.4721
+\end{verbatim}
+
+\begin{verbatim}
+%-----------------------------------------------
+% When A and B are two 2*3 random complex arrays
+>> A = randn(2, 3) + i * randn(2, 3)
+A =
+   0.5377 - 0.4336i  -2.2588 + 3.5784i   0.3188 - 1.3499i
+   1.8339 + 0.3426i   0.8622 + 2.7694i  -1.3077 + 3.0349i
+
+>> B = randn(2, 3) + i * randn(2, 3)
+B =
+   0.7254 + 1.4090i   0.7147 + 0.6715i  -0.1241 + 0.7172i
+  -0.0631 + 1.4172i  -0.2050 - 1.2075i   1.4897 + 1.6302i
+
+>> C = tproduct(A, B)
+C =
+  -0.0499 + 6.6934i -15.9137 + 1.0122i  -0.5178 + 0.7970i
+  -14.5318 + 6.7276i  -7.0977 - 2.0930i   1.2429 + 6.9517i
+\end{verbatim}
+
+
+\begin{verbatim}
+%------------------------------------------
+% When A and B are 2*2*3 random real arrays
+>> A = randn(2, 2, 3)
+A(:,:,1) =
+   -0.0068   -0.7697
+    1.5326    0.3714
+
+
+A(:,:,2) =
+   -0.2256   -1.0891
+    1.1174    0.0326
+
+
+A(:,:,3) =
+    0.5525    1.5442
+    1.1006    0.0859
+    
+    
+>> B = randn(2, 2, 3)
+
+B(:,:,1) = 
+   -0.1774    1.4193
+   -0.1961    0.2916
+
+
+B(:,:,2) = 
+    0.1978   -0.8045
+    1.5877    0.6966
+
+
+B(:,:,3) = 
+    0.8351    0.2157
+   -0.2437   -1.1658
+
+>> C = tproduct(A, B)
+
+C(:,:,1) = 
+   -1.3426   -1.0037
+    4.3985    5.0231
+
+
+C(:,:,2) = 
+    2.0206    1.8076
+   -1.9653   -1.3698
+
+
+C(:,:,3) = 
+    3.5530   -0.9110
+    1.6056   -0.5372
+
+\end{verbatim}    
+
+
+
+
+
+
+
+
+
+
+\paragraph{\color{blue}\sc Multi-way Fourier Transform and Inverse Transform}
+
+Liang Liao and Stephen John Maybank give a rigorous definition of multi-way Fourier transform and inverse transform in \cite{liao2020general,liao2020generalized}. 
+For convenience, the definition is organized as follows. 
+
+\begin{definition}[\sc Multi-way Fourier transform]
+The Fourier transform is a linear isomorphism 
+defined by the $N$-mode multiplication of tensors, which sends each element $X_\mathit{T} \in C \equiv \mathbb{C}^{I_1\times \cdots \times I_N}$  to $\tilde{X}_\mathit{T} \in C \equiv \mathbb{C}^{I_1\times \cdots \times I_N}$ as follows. 
+\begin{equation}
+\tilde{X}_\mathit{T} \doteq  
+F(X_\mathit{T}) \doteq  X_\mathit{T} \times_1 W_\mathit{mat}^{(I_1)} \cdots \times_k W_\mathit{mat}^{(I_n)} 
+\cdots \times_N W_\mathit{mat}^{(I_N)} \in 
+C \equiv 
+\mathbb{C}^{I_1\times \;\cdots\; \times I_N}
+\label{equation:fourier-transform-tscalar}
+\end{equation}
+where $W_\mathit{mat}^{(I_n)} \in \mathbb{C}^{I_n\times I_n} $ denotes the $I_n\times I_n$ 
+Fourier matrix  for all $n \in [N]$. 
+\end{definition}
+
+
+The $(m_1, m_2)$-th 
+complex entry of the matrix $W_\mathit{mat}^{(I_n)}$ is given by
+\begin{equation}
+\left( \scalebox{0.92}{$W_\mathit{mat}^{(I_n)}$}  \right)_{m_1, m_2} = e^{2\pi i
+\cdot (m_1 - 1) \cdot (m_2 - 1) \cdot I_{k}^{-1}  } 
+\in \mathbb{C}
+\;,\;\; \forall\; (m_1, m_2) \in [I_n] \times [I_n] \;\;. 
+\label{equation:entri-fourier-matrix}
+\end{equation}
+
+
+The inverse multi-way transform $F^{-1}: \tilde{X}_\mathit{T} \mapsto X_\mathit{T}$
+is given by the following $N$-mode multiplication for tensors as follows. 
+\begin{equation}
+\scalebox{0.9}{$
+X_\mathit{T} \doteq F^{-1}(\tilde{X}_\mathit{T}) =  \tilde{X}_\mathit{T} \times_1 
+\left( \scalebox{0.92}{$W_\mathit{mat}^{(I_1)}$}   \right)^{-1} \cdots \times_n 
+\left( \scalebox{0.92}{$W_\mathit{mat}^{(I_n)}$} \right)^{-1} 
+\cdots  \times_N \left( \scalebox{0.92}{$W_\mathit{mat}^{(I_N)}$} \right)^{-1}
+\in C \equiv \mathbb{C}^{I_1\times \cdots \times I_N}
+$}
+\label{equation:inverse-fourier-transform-tscalar}
+\end{equation}
+where $\left(\scalebox{0.92}{$W_\mathit{mat}^{(I_n)}$} \right)^{-1}$ denotes  
+the inverse of the matrix 
+$W_\mathit{mat}^{(I_n)} $ for all $n \in [N]$. 
+
+
+It is possible to employ a different multi-way transform and inverse transform to define a variant t-algebra $C$. 
+Nevertheless, we only discuss the proposed algebra based on multi-way Fourier transforms or equivalently multi-way circular convolution. Interested readers are referred to \cite{liao2020general,liao2020generalized} to connect the multi-way circular convolution and Fourier transform.
+
+
+\subsection{{\color{blue} \sc Fourier Matrix}: {\color{blue}fourier\_matrix}}
+For the MATLAB enthusiasts, who only care about getting their applications done quickly, the following function gives the $n\times n$ Fourier matrix. 
+\begin{lstlisting}[language=MATLAB, caption={\bf fourier\_matrix.m}{:\hspace{0.5em}} 
+function returns a $n\times n$ Fourier transform, 
+label=fourier-matrix] 
+function fourier_matrix_result = fourier_matrix(n)
+	% this function computes the nxn Fourier matrix 
+	assert(isscalar(n));
+	assert(n > 0);
+	fourier_matrix_result = fft(eye(n), [], 1);
+end
+\end{lstlisting} 
+
+\noindent 
+{\color{red} \sc syntax}
+
+{\tt  Y = fourier\_matrix(n) }
+
+
+\noindent
+{\color{red} \sc description}
+
+The input argument {\tt n} is a positive integer. The result {\tt Y} is a $n\times n$ square complex matrix (i.e., Fourier matrix), whose $(m_1, m_2)$-th entry is given by equation (\ref{equation:entri-fourier-matrix}). 
+
+
+\noindent
+{\color{red} \sc examples}
+\begin{verbatim}
+%-----------------------   
+% The 3*3 fourier matrix  
+>> fourier_matrix(3)
+ans =
+   1.0000 + 0.0000i   1.0000 + 0.0000i   1.0000 + 0.0000i
+   1.0000 + 0.0000i  -0.5000 - 0.8660i  -0.5000 + 0.8660i
+   1.0000 + 0.0000i  -0.5000 + 0.8660i  -0.5000 - 0.8660i
+
+%-----------------------   
+% The 2*2 fourier matrix    
+>> fourier_matrix(2)
+ans = 
+     1     1
+     1    -1
+\end{verbatim}
+
+\begin{remarks}[Shape of a Fourier matrix]
+A Fourier matrix must be square. 
+\end{remarks}
+
+
+\subsection{{\color{blue} \sc Inverse Fourier Matrix}: {\color{blue}ifourier\_matrix}}
+The inverse Fourier transform is given by the following code. 
+
+\begin{lstlisting}[language=MATLAB, caption={\bf ifourier\_matrix}{:\hspace{0.5em}} 
+function returns a $n\times n$ Fourier transform, 
+label=inverse-fourier-matrix] 
+function ifourier_matrix_result = ifourier_matrix(n)
+	% this function computes the nxn inverse Fourier matrix 
+	ifourier_matrix_result = conj(fourier_matrix(n)) / n; 
+end
+\end{lstlisting} 
+
+
+\noindent 
+{\color{red} \sc syntax}
+
+{\tt  Y = ifourier\_matrix(n) }
+
+
+\noindent
+{\color{red} \sc description}
+
+The input argument {\tt n} is a positive integer. The result {\tt Y} is a $n\times n$ square complex matrix (i.e., inverse Fourier matrix). The result returned by {\tt ifourier\_matrix(n)} is the inverse matrix of the result by {\tt fourier\_matrix(n)}. 
+
+Let the $n\times n$ Fourier matrix be $X_\mathit{mat} \doteq W_\mathit{mat}^{(I_n)}$ and its inverse matrix be $Y_\mathit{mat} \doteq \big(   
+\scalebox{0.9}{$W_\mathit{mat}^{(I_n)}$}
+ \big)^{-1}$. Besides the equality $X_\mathit{mat} \cdot Y_\mathit{mat} = Y_\mathit{mat} \cdot X_\mathit{mat} = I_\mathit{mat} $, the following equality holds 
+\begin{equation} 
+\begin{aligned}
+(Y_\mathit{mat})_{m_1, m_2} &= (1/n) \cdot \overline{(X_\mathit{mat})_{m_1, m_2}}  \\
+&= (1/n) \cdot e^{-2\pi i
+\cdot (m_1 - 1) \cdot (m_2 - 1) \cdot I_{k}^{-1}  }  
+\;\;,\;\; \forall (m_1, m_2) \in [I_n] \times [I_n]
+\end{aligned}
+\end{equation}
+
+Thus, {\sc function} \ref{inverse-fourier-matrix} is an efficient way of computing an inverse Fourier matrix.  
+
+
+%------------
+\noindent
+{\color{red} \sc examples}
+\begin{verbatim}
+%-------------------------------   
+% The 3*3 inverse fourier matrix  
+>> ifourier_matrix(3)
+ans = 
+   0.3333 + 0.0000i   0.3333 + 0.0000i   0.3333 + 0.0000i
+   0.3333 + 0.0000i  -0.1667 + 0.2887i  -0.1667 - 0.2887i
+   0.3333 + 0.0000i  -0.1667 - 0.2887i  -0.1667 + 0.2887i
+\end{verbatim}
+
+
+\subsection{{\color{blue} \sc Identity T-scalar}: {\color{blue}E\_T}} 
+The function returns the identity t-scalar of a given size is given as follows. 
+
+\noindent 
+{\color{red} \sc syntax}
+
+{\tt  E = E\_T(tsize) }
+
+
+\noindent
+{\color{red} \sc description}
+
+The input argument {\tt tsize} is a row array of positive integers. The result is an array whose inceptional entry is equal to $1$, and the other entries are equal to $0$.  
+
+
+%------------
+\noindent
+{\color{red} \sc examples}
+\begin{verbatim}
+%-----------------------   
+% E_t with the tsize [3, 3]
+>> E_T([3, 3])
+ans =
+     1     0     0
+     0     0     0
+     0     0     0
+\end{verbatim}
+
+\begin{verbatim}
+%--------------------------------------------------------   
+% multi-way Fourer transform of the 3*3 identity t-scalar
+>> fftn(E_T([3, 3]))
+ans =
+     1     1     1
+     1     1     1
+     1     1     1
+\end{verbatim}
+
+
+
+\begin{verbatim}     
+%---------------------------   
+% E_T with the tsize [2, 3]
+>> E_T([2, 3])
+ans =
+     1     0     0
+     0     0     0
+\end{verbatim}
+
+
+\begin{verbatim}  
+%--------------------------------------------------------   
+% multi-way Fourer transform of the 3*3 identity t-scalar
+>> fftn(E_T([2, 3]))
+ans =
+     1     1     1
+     1     1     1
+\end{verbatim}
+
+
+\subsection{{\color{blue} \sc Zero T-scalar}: {\color{blue}Z\_T}} 
+This function returns the zero t-scalar of a given size. 
+
+
+\noindent 
+{\color{red} \sc syntax}
+
+{\tt  Y = Z\_T(tsize) }
+
+
+\noindent
+{\color{red} \sc description}
+
+The input argument {\tt tsize} is a row array of positive integers. The result is an array of zeros. 
+When  {\tt tsize} is a single positive integer, the result is a square array of zeros. 
+
+
+%------------
+\noindent
+{\color{red} \sc examples}
+\begin{verbatim}
+%-----------------------   
+% The 3*3 zero t-scalar  
+>> Z_T([3, 3])
+ans =
+     0     0     0
+     0     0     0
+     0     0     0
+\end{verbatim}
+
+  
+\begin{verbatim}
+%-----------------------------------------------------   
+% When the input argument is a single postive integer, 
+% the output is a square array of zeros
+>> Z_T(2)
+ans =
+     0     0
+     0     0
+\end{verbatim}
+
+\begin{verbatim}
+%-----------------------   
+% The 1*3 zero t-scalar  
+>> Z_T([1, 3])
+ans =
+     0     0     0
+\end{verbatim}
+
+
+\begin{verbatim}
+%-------------------------   
+% The 2*3*2 zero t-scalar  
+>> Z_T([2, 3, 2])
+ans(:,:,1) =
+
+     0     0     0
+     0     0     0
+ans(:,:,2) =
+
+     0     0     0
+     0     0     0
+\end{verbatim}
+
+
+
+\subsection{{\color{blue} \sc pseudo-inverse of a t-sclaar}: {\color{blue}tpinv\_tscalar}} 
+This function returns the pseudo-inverse of a t-scalar. 
+
+
+
+\noindent 
+{\color{red} \sc syntax}
+
+{\tt  Y = tpinv\_tscalar(tscalar) }
+
+
+\noindent
+{\color{red} \sc description}
+
+The input argument {\tt tscalar} is a numeric array. The output t-sclalar  {\tt Y} is a numeric array of the same size.  
+The multiplication of {\tt tscalar}  and {\tt Y}  yields a idempotent t-scalar, which is also the generalized rank of both  {\tt tscalar}  and {\tt Y}. 
+
+
+%------------
+\noindent
+{\color{red} \sc examples}
+\begin{verbatim}
+%------------------------------------------------------   
+% The pseudo-inverse of the identity t-scalar is itself.   
+>>  tpinv_tscalar(E_T(3))
+ans =
+     1     0     0
+     0     0     0
+     0     0     0
+\end{verbatim}
+
+Mathematically, the following equality holds
+\begin{equation}
+\begin{aligned}
+E_\mathit{T}^{\scalebox{0.8}{$+$}} \equiv E_\mathit{T}^{\scalebox{0.8}{$-1$}} \equiv E_{T} \\
+Z_\mathit{T}^{\scalebox{0.8}{$+$}} \equiv Z_{T} \;\;.
+\end{aligned}
+\end{equation}
+where $(\cdot)^{\scalebox{0.8}{$+$}}$ denotes the psuedo-inverse of a t-scalar, 
+and $(\cdot)^{\scalebox{0.8}{$-1$}}$ denotes the inverse of a t-scalar.
+
+The zero t-scalar $Z_{T}$ is non-invertible and the identity t-scalar $E_T$ is invertible. Any t-scalar is pseudo-invertible \cite{liao2020general,liao2020generalized}.  
+
+
+\bibliographystyle{amsalpha}
+\bibliography{egbib}
+
+
+\end{document}

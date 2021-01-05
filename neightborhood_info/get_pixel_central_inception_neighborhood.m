@@ -1,4 +1,4 @@
-function get_pixel_central_inception_neighborhood(row_num, col_num, mode, path, layer_num)
+function get_pixel_central_inception_neighborhood(row_num, col_num, mode, file_path, layer_num)
 	% this function creates the pixel neighborhood table and store the table to sompelace specified by argument path
 
 
@@ -8,9 +8,9 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode, path, 
 
 	assert(isequal(mode, 'central') | isequal(mode, 'inception'));
 	assert(ismember(layer_num, [1, 2, 3]));
-	assert(isa(path, 'char') );
+	assert(isa(file_path, 'char') );
 	
-	save_dir =  path;
+	save_dir =  file_path;
 
 	if isequal(mode, 'central')
 		% save_dir = sprintf('%s\\%s_%dx%d', pwd, 'central_neighorhood', row_num, col_num);

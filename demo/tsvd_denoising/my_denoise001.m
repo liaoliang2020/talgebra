@@ -1,8 +1,18 @@
-function my_denoise000
-	% clear; close all; clc;
+function my_denoise001
+	clear; close all; clc;
 
 	row_num = 256;
 	col_num = 256;
+
+	current_dir = pwd;
+	
+
+	% neighbrohood_mode = 'central';
+	neighbrohood_mode = 'inception';
+	layer_num = 1;
+	get_pixel_central_inception_neighborhood(row_num, col_num, neighbrohood_mode, current_dir, layer_num);
+
+
 
 	tsize = [3 3];
 	noise_level = 0.3;

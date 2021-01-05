@@ -1,7 +1,6 @@
 function get_pixel_central_inception_neighborhood(row_num, col_num, mode, file_path, layer_num)
 	% this function creates the pixel neighborhood table and store the table to sompelace specified by argument path
 
-
 	if nargin == 4
 		layer_num = 1;
 	end  

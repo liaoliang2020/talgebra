@@ -18,6 +18,8 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode)
 		eval(comand);
 		disp(comand);
     end
+	
+	
 
     tsize = [3, 3];
 	
@@ -65,11 +67,11 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode)
 
 	
 	if isequal(mode, 'central')
-		save_data(save_dir, 'central_neighorhood_layer001', 'neighorhood_layer001');
+		%save_data(save_dir, 'central_neighorhood_layer001', 'neighorhood_layer001');
 		save_data(save_dir, 'central_neighorhood_layer001_single_index', 'neighorhood_layer001_single_index');
 	else 
 		assert(isequal(mode, 'inception'));
-		save_data(save_dir, 'inception_neighorhood_layer001', 'neighorhood_layer001');
+		%save_data(save_dir, 'inception_neighorhood_layer001', 'neighorhood_layer001');
 		save_data(save_dir, 'inception_neighorhood_layer001_single_index', 'neighorhood_layer001_single_index');
 	end
 
@@ -107,11 +109,11 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode)
 	neighorhood_layer002 = reshape(neighorhood_layer002, 2, prod([tsize, tsize]), prod([row_num, col_num]));
 	
 	if isequal(mode, 'central')
-		save_data(save_dir, 'central_neighorhood_layer002', 'neighorhood_layer002');
+		%save_data(save_dir, 'central_neighorhood_layer002', 'neighorhood_layer002');
 		save_data(save_dir, 'central_neighorhood_layer002_single_index', 'neighorhood_layer002_single_index');
 	else 
 		assert(isequal(mode, 'inception'));
-		save_data(save_dir, 'inception_neighorhood_layer002', 'neighorhood_layer002');
+		%save_data(save_dir, 'inception_neighorhood_layer002', 'neighorhood_layer002');
 		save_data(save_dir, 'inception_neighorhood_layer002_single_index', 'neighorhood_layer002_single_index');
 	end
 
@@ -148,11 +150,11 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode)
 	
 
 	if isequal(mode, 'central')
-		save_data(save_dir, 'central_neighorhood_layer003', 'neighorhood_layer003');
+		%save_data(save_dir, 'central_neighorhood_layer003', 'neighorhood_layer003');
 		save_data(save_dir, 'central_neighorhood_layer003_single_index', 'neighorhood_layer003_single_index');	
 	else 
 		assert(isequal(mode, 'inception'));
-		save_data(save_dir, 'inception_neighorhood_layer003', 'neighorhood_layer003');
+		%save_data(save_dir, 'inception_neighorhood_layer003', 'neighorhood_layer003');
 		save_data(save_dir, 'inception_neighorhood_layer003_single_index', 'neighorhood_layer003_single_index');
 	end
 

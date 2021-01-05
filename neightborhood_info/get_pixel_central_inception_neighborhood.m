@@ -174,4 +174,5 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode, path, 
 		save_data(save_dir, 'inception_neighorhood_layer003_single_index', 'neighorhood_layer003_single_index');
 	end
 
+
 end

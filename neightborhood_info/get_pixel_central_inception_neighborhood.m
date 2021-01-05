@@ -147,7 +147,6 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode)
 	neighorhood_layer003 = reshape(neighorhood_layer003, 2, prod([tsize, tsize, tsize]), prod([row_num, col_num]));
 	
 
-
 	if isequal(mode, 'central')
 		save_data(save_dir, 'central_neighorhood_layer003', 'neighorhood_layer003');
 		save_data(save_dir, 'central_neighorhood_layer003_single_index', 'neighorhood_layer003_single_index');	

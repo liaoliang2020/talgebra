@@ -1,13 +1,21 @@
-function get_pixel_central_inception_neighborhood(row_num, col_num, mode)
-	
+function get_pixel_central_inception_neighborhood(row_num, col_num, mode, path, layer_num)
+	if nargin == 4
+		layer_num = 1;
+	end  
+
+
 	assert(isequal(mode, 'central') | isequal(mode, 'inception'));
+	assert(ismember(layer_num, [1, 2, 3]));
+	assert(isa(path, 'char') );
 	
+	save_dir =  path;
+
 	if isequal(mode, 'central')
-		save_dir = sprintf('%s\\%s_%dx%d', pwd, 'central_neighorhood', row_num, col_num);
+		% save_dir = sprintf('%s\\%s_%dx%d', pwd, 'central_neighorhood', row_num, col_num);
 		delta_pool = [-1, 0, 1];
 	else
 		assert(isequal(mode, 'inception'));	
-		save_dir = sprintf('%s\\%s_%dx%d', pwd, 'inception_neighorhood', row_num, col_num);
+		% save_dir = sprintf('%s\\%s_%dx%d', pwd, 'inception_neighorhood', row_num, col_num);
 		delta_pool = [0, 1, 2];
 	end
 
@@ -75,6 +83,9 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode)
 		save_data(save_dir, 'inception_neighorhood_layer001_single_index', 'neighorhood_layer001_single_index');
 	end
 
+	if layer_num == 1
+		return;
+	end
 
 
 	%--------------------
@@ -116,6 +127,11 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode)
 		%save_data(save_dir, 'inception_neighorhood_layer002', 'neighorhood_layer002');
 		save_data(save_dir, 'inception_neighorhood_layer002_single_index', 'neighorhood_layer002_single_index');
 	end
+
+	if layer_num == 2
+		return;
+	end
+
 
 	%------------------
 	% third layer	

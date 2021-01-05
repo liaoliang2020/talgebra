@@ -7,4 +7,5 @@
 \contentsline {subsection}{\tocsubsection {}{2.4}{{\color {blue} \sc Identity T-scalar}: {\color {blue}E\_T}}}{8}%
 \contentsline {subsection}{\tocsubsection {}{2.5}{{\color {blue} \sc Zero T-scalar}: {\color {blue}Z\_T}}}{9}%
 \contentsline {subsection}{\tocsubsection {}{2.6}{{\color {blue} \sc pseudo-inverse of a t-sclaar}: {\color {blue}tpinv\_tscalar}}}{10}%
-\contentsline {section}{\tocsection {}{}{References}}{11}%
+\contentsline {subsection}{\tocsubsection {}{2.7}{{\color {blue} \sc norm and angle of a t-scalar}: {\color {blue}tnorm\_angle}}}{11}%
+\contentsline {section}{\tocsection {}{}{References}}{12}%

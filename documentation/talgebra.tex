@@ -824,6 +824,19 @@ ans =
      0     0     0
 \end{verbatim}
 
+\begin{verbatim}
+%------------------------------------------------------   
+% The pseudo-inverse of the zero t-scalar is still zero.  
+>> tpinv_tscalar(Z_T(3))
+ans =
+     0     0     0
+     0     0     0
+     0     0     0
+\end{verbatim}
+
+
+
+
 Mathematically, the following equality holds
 \begin{equation}
 \begin{aligned}
@@ -835,6 +848,59 @@ where $(\cdot)^{\scalebox{0.8}{$+$}}$ denotes the psuedo-inverse of a t-scalar,
 and $(\cdot)^{\scalebox{0.8}{$-1$}}$ denotes the inverse of a t-scalar.
 
 The zero t-scalar $Z_{T}$ is non-invertible and the identity t-scalar $E_T$ is invertible. Any t-scalar is pseudo-invertible \cite{liao2020general,liao2020generalized}.  
+
+
+
+
+\subsection{{\color{blue} \sc norm and angle of a t-scalar}: {\color{blue}tnorm\_angle}}
+Function {\tt tnorm\_angle} returns the norm (i.e., generalized absolute value, a nonnegative t-scalar) and 
+the generalized angle (a nonnegative t-scalar) of the t-scalar.  
+
+\noindent 
+{\color{red} \sc syntax}
+
+{\tt  [tnorm, tangle] = tnorm\_angle(tscalar) }
+
+\noindent
+{\color{red} \sc description}
+
+The input argument {\tt tscalar} and output arguments {\tt tnorm},  {\tt tangle} are also numeric arrays of the same size.  
+
+
+%------------
+\noindent
+{\color{red} \sc examples}
+\begin{verbatim}
+>> tscalar = randn(3)
+tscalar =
+    2.7694    0.7254   -0.2050
+   -1.3499   -0.0631   -0.1241
+    3.0349    0.7147    1.4897
+\end{verbatim}
+
+\begin{verbatim}
+>> [tnorm, tangle] = tnorm_angle(tscalar)
+tnorm =
+    4.3929    0.9830    0.9830
+    0.0326    0.5626   -0.2786
+    0.0326   -0.2786    0.5626
+tangle =
+   0.0000 + 0.0000i   0.0000 - 0.0359i   0.0000 + 0.0359i
+   0.0000 + 0.5954i   0.0000 + 0.0874i   0.0000 + 0.0854i
+   0.0000 - 0.5954i   0.0000 - 0.0854i   0.0000 - 0.0874i
+\end{verbatim}
+
+
+\vspace{1em}
+The multi-way Fourier transform of the norm of a t-scalar is a real array. See the following example. 
+
+\begin{verbatim}
+>> fftn(tnorm)
+ans =
+    6.9922    3.1911    3.1911
+    6.0424    2.2575    4.7809
+    6.0424    4.7809    2.2575
+\end{verbatim}
 
 
 \bibliographystyle{amsalpha}

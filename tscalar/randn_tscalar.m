@@ -1,6 +1,7 @@
 function random_tscalar = randn_tscalar(tsize, mode)
 	assert(isequal(tsize', tsize(:)));
 
+	
 	if nargin == 1
 		mode = 'complex';
 	end

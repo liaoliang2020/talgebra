@@ -1,4 +1,4 @@
-function myimag = timag(tscalar)
+function myimag = timg_part_tscalar(tscalar)
 	% this function compute the imginary part of a tscalar
 	% checked
 	% This function is optimzied by liaoliang on 11-22-2018

@@ -1,4 +1,4 @@
-function bool_result = istreal(tscalar)
+function bool_result = is_self_conjugate(tscalar)
 	% checked
 	% this function checks whether or not tscalar is a so-called real tscalar (i.e., self-conjugate tscalar)
 

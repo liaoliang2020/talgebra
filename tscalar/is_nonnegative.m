@@ -1,4 +1,4 @@
-function bool_result = istnonnegative(tscalar)
+function bool_result = is_nonnegative(tscalar)
 	% created by liaoliang 20190211
 	% checked
 	% this function checks whether or not tscalar is a so-called nonnegative tscalar 

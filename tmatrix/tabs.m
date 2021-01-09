@@ -1,4 +1,5 @@
 function result = tabs(tmatrix, tsize)
+
 	% checked
 	% this function computes the (generalized) absolute value of each t-scalar entity of a t-matrix.  
 	assert(isequal(tsize', tsize(:)));	  

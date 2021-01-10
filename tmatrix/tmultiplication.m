@@ -2,12 +2,14 @@ function tmatrix_result = tmultiplication(tmatrix1, tmatrix2, tsize)
 	% checked
 	% checked
 
+	
 	assert(isequal(tsize', tsize(:)));	 	
+	
 	assert(ndims(tmatrix1) - numel(tsize) == 2 |  ndims(tmatrix1) - numel(tsize) == 1 | ndims(tmatrix1) - numel(tsize) == 0);
 	assert(ndims(tmatrix2) - numel(tsize) == 2 |  ndims(tmatrix2) - numel(tsize) == 1 | ndims(tmatrix2) - numel(tsize) == 0);
 
+			
 		
-	
 	row_num1 = size(tmatrix1, numel(tsize) + 1);
 	col_num1 = size(tmatrix1, numel(tsize) + 2);
 
@@ -16,7 +18,8 @@ function tmatrix_result = tmultiplication(tmatrix1, tmatrix2, tsize)
 	col_num2 = size(tmatrix2, numel(tsize) + 2);
 
 	assert(col_num1 == row_num2);
-
+	
+	
 	for i = 1: numel(tsize)
 		tmatrix1 = fft(tmatrix1, [], i);
 		tmatrix2 = fft(tmatrix2, [], i);	

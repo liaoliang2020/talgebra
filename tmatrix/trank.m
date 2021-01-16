@@ -1,4 +1,5 @@
 function generalized_rank = trank(tmatrix, tsize)
+	% Modified by Liang Liao. 20200116 
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);
 
@@ -14,6 +15,9 @@ function generalized_rank = trank(tmatrix, tsize)
 	generalized_rank = zeros(tsize);
 	for i = 1: prod(tsize)
 		slice = reshape(tmatrix(i, :, :), row_num, col_num);
+
+		slice(abs(slice) < 1e-8) = 0;
+
 		generalized_rank(i) = rank(slice);
 	end
 

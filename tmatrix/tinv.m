@@ -27,7 +27,7 @@ function tresult = tinv(tmatrix, tsize)
 		
 		if rank(slice) ~= row_num
 			tresult = NaN;
-			return;;
+			return;
 		else 
 			tresult(i, :, :) = inv(slice);
 		end

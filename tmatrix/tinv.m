@@ -24,6 +24,7 @@ function tresult = tinv(tmatrix, tsize)
 		% slice = tmatrix(i, :, :);
 		slice = reshape(tmatrix(i, :, :), row_num, col_num);
 
+		
 		if rank(slice) ~= row_num
 			tresult = NaN;
 			return;;

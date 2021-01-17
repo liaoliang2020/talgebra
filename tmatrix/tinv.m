@@ -24,8 +24,12 @@ function tresult = tinv(tmatrix, tsize)
 		% slice = tmatrix(i, :, :);
 		slice = reshape(tmatrix(i, :, :), row_num, col_num);
 
-		tresult(i, :, :) = inv(slice);
-
+		if rank(slice) ~= row_num
+			tresult = NaN;
+			return;;
+		else 
+			tresult(i, :, :) = inv(slice);
+		end
 	end
 
 	tresult = reshape(tresult, [tsize, row_num, col_num]);

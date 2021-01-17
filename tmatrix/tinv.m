@@ -12,6 +12,7 @@ function tresult = tinv(tmatrix, tsize)
 	col_num = size(tmatrix, numel(tsize) + 2);
 
 	assert(row_num == col_num);
+	
 
 	for i = 1: numel(tsize)
 		tmatrix = fft(tmatrix, [], i);		

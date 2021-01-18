@@ -20,6 +20,7 @@ function tresult = tpinv(tmatrix, tsize)
 		tmatrix = fft(tmatrix, [], i);		
 	end
 
+	
 	tmatrix = reshape(tmatrix, prod(tsize), row_num, col_num);
 	tresult = zeros([prod(tsize), col_num, row_num]);
 

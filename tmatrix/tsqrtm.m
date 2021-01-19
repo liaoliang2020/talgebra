@@ -1,6 +1,9 @@
 function tmatrix_result = tsqrtm(tmatrix, tsize)
 	% checked
-
+	% this function generates the MATLAB function sqrt
+	
+	
+	
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 |  ndims(tmatrix) - numel(tsize) == 1 | ndims(tmatrix) - numel(tsize) == 0);
 

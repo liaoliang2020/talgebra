@@ -1,4 +1,4 @@
-function compound_img
+function run_this_script_compound_img
 	% This demo shows how to get higher-order compound image(s) from a legacy grey image
 	% Let's take the "cameraman" image for example. 
 

@@ -9,6 +9,9 @@ function [TV, TD] = teig(tmatrix, tsize)
 	row_num = size(tmatrix, numel(tsize) + 1);
 	col_num = size(tmatrix, numel(tsize) + 2);
 
+	% Input t-matrix tmatrix m must be square
+	assert(row_num == col_num);
+
 	for i = 1: numel(tsize)
 		tmatrix = fft(tmatrix, [], i);		
 	end

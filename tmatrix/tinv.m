@@ -1,4 +1,5 @@
 function tresult = tinv(tmatrix, tsize)
+	
 	% checked
 	% checked
 	% checked on 11-22-2018 by liaoliang

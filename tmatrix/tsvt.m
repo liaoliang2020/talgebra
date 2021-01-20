@@ -6,14 +6,14 @@ function approximation_tmatrix = tsvt(tmatrix, tau, tsize)
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);
 
-	% if tau is t-scalar but a canonical scalar
-	% then transform tau to a t-scalar
+	% If tau is NOT t-scalar but a canonical scalar
+	% Then transform tau to a t-scalar
 	if ~isequal(size(tau), size(tsize)) & numel(tau) == 1
 		tau = [tau, zeros(1, numel(tsize) - 1) ];
 		tau = reshape(tau, size(tsize));
 	end
 
-	assert(istnonnegative(tau));
+	assert(is_nonnegative(tau));
 	assert(isequal(size(tau), tsize));
 
 	row_num = size(tmatrix, numel(tsize) + 1);
@@ -30,7 +30,7 @@ function approximation_tmatrix = tsvt(tmatrix, tau, tsize)
 	approximation_tmatrix = tmatrix; 
 	for i = 1: prod(tsize)
 		slice = reshape(tmatrix(i, :), row_num, col_num);
-		tau_scalar = real(tau(i));
+		tau_scalar = abs(tau(i));
 		assert(tau_scalar >= 0);
 		approximation = svt(slice, tau_scalar);
 

@@ -1,6 +1,5 @@
 function tresult = tprod(tmatrix, tsize)
 	% This function calculates the production of the t-scalars in tmatrix 
-	% This function generalizes the canonical MATLAB function prod
 	% 20190121
 
 

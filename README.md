@@ -4,5 +4,4 @@ https://arxiv.org/abs/2001.11708 and https://arxiv.org/abs/2011.00307
 
 A novel semisimple commutative algebra and a generalized matrix paradigm over the algebra.  
 
-
 Generalized Data Analytics with Algebraic Modules Rather Than Algebraic Vector Spaces.   

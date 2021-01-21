@@ -12,9 +12,14 @@ function tsvd_higher_order_low_rank_approximation
 
 	assert(isequal(size(rbg_img), [row_num, col_num, fra_num]));
 	rbg_img_tmatrix = permute(rbg_img, [3, 1, 2]);
-	rbg_img_tmatrix = reshape(rbg_img_tmatrix, [tsize, row_num, col_num]) ;	
+	rbg_img_tmatrix = reshape(rbg_img_tmatrix, [tsize, row_num, col_num]);
+	orginal_rank = trank(rbg_img_tmatrix, tsize);
+	orginal_rank = fftn(orginal_rank);	
 
-	[X1, X2, X3] = ndgrid(0: max_canonical_rank, 0: max_canonical_rank, 0: max_canonical_rank);
+	quant_level = 10;
+	[X1, X2, X3] = ndgrid(linspace(0, orginal_rank(1), quant_level), ...
+		linspace(0, orginal_rank(1), quant_level), ...
+		linspace(0, orginal_rank(1), quant_level));
 
 	generalized_ranks = [X1(:), X2(:), X3(:)];
 	% generalized_ranks = flipud(generalized_ranks);
@@ -22,7 +27,7 @@ function tsvd_higher_order_low_rank_approximation
 	for i = 1: size(generalized_ranks, 1)
 		delta = generalized_ranks(i, :);
 		delta = reshape(delta, tsize);
-		delta = fftn(delta);
+		delta = ifftn(delta);
 
 		approximation = tsvd_approximation(rbg_img_tmatrix, delta, tsize);
 		
@@ -33,12 +38,12 @@ function tsvd_higher_order_low_rank_approximation
 		approximation = permute(approximation, [2, 3, 1]);
 		
 
-		title_notation1 = sprintf('Generalized rank is [%f, %f, %f]', approximation_rank(1), approximation_rank(2), approximation_rank(3));
+		title_notation1 = sprintf('Generalized rank is a nonnegative t-scalar [%f, %f, %f]', approximation_rank(1), approximation_rank(2), approximation_rank(3));
 		title_notation2 = sprintf('PSNR is %f', PSNR(approximation(:), rbg_img(:), 'real') );
-		title_notation = sprintf('%s,  %s', title_notation1, title_notation2);
+		title_notation = sprintf('i = %05d \t %s,  %s\n', i, title_notation1, title_notation2);
 
-		imshow(uint8(approximation)); 
-		title(title_notation); 
+		imshow(uint8(approximation)); title(sprintf('i = %05d', i));
+		disp(title_notation); 
 		pause(0.1);
 		
 	end

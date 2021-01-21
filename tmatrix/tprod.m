@@ -2,7 +2,6 @@ function tresult = tprod(tmatrix, tsize)
 	% This function calculates the production of the t-scalars in tmatrix 
 	% 20190121
 
-
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);
 

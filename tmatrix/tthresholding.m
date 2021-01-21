@@ -5,6 +5,8 @@ function result = tthresholding(tmatrix, tscalar, mode, tsize)
 	assert(ismember(mode, {'top', 'bottom'} ));
 	assert(isequal(size(tscalar), tsize)); 
 	
+	% make sure each t-scalar entries of tmatrix is self-conjugate
+	% make sure  input tscalar  is self-conjugate  
 	assert(norm(reshape(treal(tmatrix, tsize), [], 1) - tmatrix(:)) < 1e-6); 
 	assert(norm(reshape(treal(tscalar, tsize), [], 1) - tscalar(:)) < 1e-6);
 

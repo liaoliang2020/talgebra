@@ -1,6 +1,5 @@
 function dB = PSNR(data1, data2, mode)
-	
-    if nargin == 2
+	if nargin == 2
 		mode = 'real';
     end
     

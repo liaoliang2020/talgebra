@@ -1,6 +1,13 @@
 function dB = PSNR(data1, data2, mode)
-	assert(isequal(mode, 'real') | isequal(mode, 'complex'));
+	
+    if nargin == 2
+		mode = 'real';
+    end
+    
+    assert(isequal(mode, 'real') | isequal(mode, 'complex'));
 	assert(isequal(size(data1), size(data2)))
+	
+	
 	
 	
 	if isequal(mode, 'real')

@@ -30,10 +30,16 @@ function semisimplicity
 
 	C = prod(tsize) * idem_base' * reshape(A, prod(tsize), []);
 	C = reshape(C, [tsize, row_num, col_num]);
-
 	assert(norm(C(:) - B(:)) < 1e-6 );
 
+
+	A_hat = idem_base * reshape(B, prod(tsize), []);
+	A_hat = reshape(A_hat, [tsize, row_num, col_num]);
+	assert(norm(A_hat(:) - A(:)) < 1e-6);
+
 	fprintf('Sucessful\n');
+	fprintf('All asserts in this script are passed\n');
+	fprintf('The fourier transform is equivalent to the idempotentce decomposition\n');
 
 
 end

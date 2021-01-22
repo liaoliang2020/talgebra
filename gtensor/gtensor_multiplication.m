@@ -1,4 +1,4 @@
-function gtensor_product = gtensormultiplication(tmatrix, gtensor, mod_k, tsize)
+function gtensor_product = gtensor_multiplication(tmatrix, gtensor, mod_k, tsize)
 	% this function compute the generalized mode-k  multiplication of tmatrix and gtensor
 
 	assert(isequal(tsize', tsize(:)));	 

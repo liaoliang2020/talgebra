@@ -33,5 +33,7 @@ function semisimplicity
 
 	assert(norm(C(:) - B(:)) < 1e-6 );
 
+	fprintf('Sucessful\n');
+
 
 end

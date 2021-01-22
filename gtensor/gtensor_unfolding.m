@@ -1,4 +1,4 @@
-function flat_tmatrix = gtensorfactorkflattening(gtensor, mod_k, tsize)
+function flat_tmatrix = gtensor_unfolding(gtensor, mod_k, tsize)
 	% checked
 	% this function flaten a generalized g-tensor to a t-matrix
 

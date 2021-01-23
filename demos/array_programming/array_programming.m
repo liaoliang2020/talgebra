@@ -1,4 +1,4 @@
-function my_arrayfun
+function array_programming
 	clear; close all; clc;
 	
 	tsize = [3, 3];

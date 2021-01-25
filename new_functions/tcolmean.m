@@ -1,4 +1,5 @@
 function tresult = tcolmean(tmatrix, tsize)
+	% This function computes the colum t-vectors in a t-matrix
 	% checked
 	% checked
 

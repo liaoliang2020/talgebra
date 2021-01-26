@@ -34,8 +34,8 @@ function tmatrix_result = tmultiplication(tmatrix1, tmatrix2, tsize)
 
 
 	for i = 1: prod(tsize)
-		slice_tmatrix1 = squeeze(tmatrix1(i, :, :));
-		slice_tmatrix2 = squeeze(tmatrix2(i, :, :));
+		slice_tmatrix1 = tmatrix1(i, :, :);
+		slice_tmatrix2 = tmatrix2(i, :, :);
 
 		slice_tmatrix1 = reshape(slice_tmatrix1, row_num1, col_num1);
 		slice_tmatrix2 = reshape(slice_tmatrix2, row_num2, col_num2);

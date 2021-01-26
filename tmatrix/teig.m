@@ -2,8 +2,6 @@ function [TV, TD] = teig(tmatrix, tsize)
 	% This function generalizes the canonical MATLAB function eig
 	% 20190121
 
-
-
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);
 
@@ -23,8 +21,9 @@ function [TV, TD] = teig(tmatrix, tsize)
 	D_size = 0;
 	for i = 1: prod(tsize)
 		slice = reshape(tmatrix(i, :, :), row_num, col_num);
+		slice = round(slice, 8);
 		[V, D] = eig(slice);
-
+		
 		if i == 1
 			V_size = size(V);
 			D_size = size(D);			

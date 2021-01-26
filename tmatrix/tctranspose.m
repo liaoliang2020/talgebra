@@ -35,7 +35,7 @@ function tmatrix_result = tctranspose(tmatrix, tsize)
 
 	for i = 1: prod(tsize)
 	
-		slice_tmatrix = squeeze(tmatrix(i, :, :));
+		slice_tmatrix = tmatrix(i, :, :);
 		slice_tmatrix = reshape(slice_tmatrix, row_num, col_num);
 
 

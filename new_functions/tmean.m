@@ -7,6 +7,11 @@ function result = tmean(gtensor, dimension_index, tsize)
 	msize = msize((numel(tsize) + 1): end  );
 	assert(~isempty(msize));
 
+	if numel(msize) == 1
+		msize = [msize, 1];
+	end
+
+
 	for i = 1: numel(tsize)
 		gtensor = fft(gtensor, [], i);
 	end

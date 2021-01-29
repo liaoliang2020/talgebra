@@ -45,11 +45,5 @@ function tsvd_higher_order_low_rank_approximation
 		imshow(uint8(approximation)); title(sprintf('i = %05d', i));
 		disp(title_notation); 
 		pause(0.1);
-		
 	end
-
-
-
-
-	
 end

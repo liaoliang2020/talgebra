@@ -3,17 +3,6 @@ function flat_tmatrix = gtensor_unfolding(gtensor, mod_k, tsize)
 	% this function flaten a generalized g-tensor to a t-matrix
 
 
-	% function gtensorfactorkflattening
-	% 	clear; close all; clc;
-
-	% 	tsize = [3, 3];
-	% 	d1 = 5;
-	% 	d2 = 7;
-	% 	d3 = 11;
-	% 	mod_k = 1;
-	% 	gtensor = randn([tsize, d1, d2, d3]);
-
-
 	assert(isequal(tsize', tsize(:)));	 
 	order_num = ndims(gtensor) - numel(tsize);
 	assert(order_num >= 3);

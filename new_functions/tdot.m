@@ -13,7 +13,7 @@ function result = tdot(A, B, tsize)
 	if numel(msize) == 1
 		msize = [msize, 1];
 	end
-	
+
 	for i = 1: numel(tsize)
 		A = fft(A, [], i);
 		B = fft(B, [], i);
@@ -28,18 +28,20 @@ function result = tdot(A, B, tsize)
 
 		sliceB = B(i, :);
 		sliceB = reshape(sliceB, msize);
+		
 
 		result_slice = dot(sliceA, sliceB);
 		result_slice_size = size(result_slice);
 
+		
+
 		if i == 1
 			result = zeros([ prod(tsize), prod(result_slice_size)  ]);
 		end
-
 		result(i, :) = reshape(result_slice, 1, []);
 	end
 
-	result = reshape(reshape, [tsize, result_slice_size]);
+	result = reshape(result, [tsize, result_slice_size]);
 
 	for i = 1: numel(tsize)
 		result = ifft(result, [], i);

@@ -6,11 +6,14 @@ function liao
 	A = randn([row_num, col_num]) + i * randn([row_num, col_num]);
 	B = randn([row_num, col_num]) + i * randn([row_num, col_num]);
 
+	liaoliang000 = dot(A(:), B(:));
+	liaoliang001 = trace(A' * B);
 
-	trace(A * B')
-	trace(A' * B)
+	liaoliang002 = trace(A * B');
+	liaoliang002 = liaoliang002';
 
-	dot(A(:), B(:))
+	[liaoliang000; liaoliang001; liaoliang002]
+
 
 
 end

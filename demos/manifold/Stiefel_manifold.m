@@ -8,9 +8,11 @@ function Stiefel_manifold
 	
 	N = X * mysym(ctranspose(X) * Z);
 	T = X * myskew(ctranspose(X)  * Z) + (eye(row_num) - X * ctranspose(X)) * Z;
+	% using the Euclidenan metric for the inner product 
 	% inner_product = trace(T' * N)
 
-	inner_product = trace(T' *  (eye(size(X * X')) - 0.5 * X * X') * N)
+	% using the canonical metric on the tangent space at the point X
+	inner_product = trace(T' *  (eye(row_num) - 0.5 * X * X') * N);
 
 	assert(isequal(round(N + T, 4), round(Z, 4)));
 	assert(norm(X' * T + T' * X, 'fro') < 1e-8)	

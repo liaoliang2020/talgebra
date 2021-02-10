@@ -32,10 +32,7 @@ function Stiefel_manifold(X, Z)
 end
 
 function [T, N] = Stiefel_manifold_sub(X, Z, row_num)
-	% row_num = 11;
-	% col_num = 3;
 	
-
 	N = X * mysym(X' * Z);
 	T = X * myskew(X' * Z) + (eye(row_num) - X * X') * Z;
 

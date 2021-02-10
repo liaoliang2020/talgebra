@@ -32,20 +32,14 @@ function Stiefel_manifold(X, Z)
 end
 
 function [T, N] = Stiefel_manifold_sub(X, Z, row_num)
-	
 	N = X * mysym(X' * Z);
 	T = X * myskew(X' * Z) + (eye(row_num) - X * X') * Z;
 
 	assert(norm(N + T - Z, 'fro') < 1e-8) ;
 	liao = X' * T + ctranspose(X' * T);
 	assert(norm(liao, 'fro') < 1e-8);
-
 	assert(dot(to_real(T), to_real(N) ) < 1e-8);
 
-
-
-e-6);
-	
 end
 
 
@@ -72,12 +66,3 @@ function result = to_complex(A)
 	result = result(:); 
 end 
 
-
-% function result = iscskew(A)
-% 	if  norm(A + ctranspose(A), 'fro') < 1e-6
-% 		result = true;
-% 	else 
-% 		result = false;
-
-% 	end
-% end

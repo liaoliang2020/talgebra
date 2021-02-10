@@ -1,0 +1,131 @@
+\documentclass[conference,onecolumn]{IEEEtran}
+%\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+%\usepackage{cite}
+
+\usepackage{setspace}
+
+\usepackage{numprint}
+\npdecimalsign{.}
+\nprounddigits{3}
+
+
+
+\usepackage{multirow}
+
+
+\usepackage{lipsum}
+\usepackage{algorithm}
+\usepackage{algorithmic,eqparbox,array}
+\renewcommand\algorithmiccomment[1]{%
+  \hfill{\%} \eqparbox{COMMENT}{#1}%
+}
+\newcommand\LONGCOMMENT[1]{%
+  \hfill\#\ \begin{minipage}[t]{\eqboxwidth{COMMENT}}#1\strut\end{minipage}%
+}
+
+
+\usepackage{balance}
+
+
+%\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{mathtools}
+
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+
+\begin{document}
+
+\title{\huge \bf Generalized Image Reconstruction over T-Algebra
+}
+
+\author{
+\IEEEauthorblockN{Liang Liao}
+\IEEEauthorblockA{liaoliangis@126.com}
+}
+
+
+\maketitle
+
+
+%\begin{abstract}
+%Principal Component Analysis (PCA) is well known for its capability of dimension reduction and data compression. However, when using PCA for compressing/reconstructing images,  images need to be recast to vectors. The vectorization of images makes some correlation constraints of neighboring pixels and spatial information lost.  To deal with the drawbacks of the vectorizations adopted by PCA,  we used small neighborhoods of each pixel to form compoun pixels and use a tensorial version of PCA, called TPCA (Tensorial Principal Component Analysis), to compress and reconstruct a compound image of compound pixels. Our experiments on public data show that TPCA compares favorably with PCA in compressing and reconstructing images.  We also show in our experiments that the performance of TPCA increases when the order of compound pixels increases. 
+%\end{abstract}
+%
+%\begin{IEEEkeywords}
+%generalized image analysis, tensorial algebra, principal component analysis, compound image
+%\end{IEEEkeywords}
+
+\newcommand\mynormal[1]{
+\scalebox{1}{$#1$}
+}
+
+\section{Introduction}
+
+Let the Stiefel manifold over the field $\mathbb{F}$ be 
+\begin{equation}
+V_{k}(\mathbb{F}^{n}) \doteq \{X \in \mathbb{F}^{n\times k} | X^{*} X = I_{k}  \}
+\end{equation}
+
+Then, according to the standard knowledge of the Stiefel manifold, one has the following results.
+\begin{equation} 
+\begin{aligned}
+&\operatorname{dim} V_{k}(\mathbb{R}^{n}) = nk - \frac{1}{2}\,  k(k+1) \; \\ 
+&\operatorname{dim} V_{k}(\mathbb{C}^{n}) = 2nk - k^{2} \;.
+\end{aligned}
+\end{equation}
+
+%When $\mathbb{F} \equiv \mathbb{R}$ and $n = 2$, $k =1$, 
+The Stiefel manifolfd 
+$V_k(\mathbb{R}^{n}) \,\big|_{n = 2, k=1} \equiv 
+V_k(\mathbb{C}^{n}) \,\big|_{1 = 2, k=1}
+$ is a circle with the radius $1$ in a two-dimensional real Eucliddean space.
+
+
+\newcommand{\tspace}{
+\mathit{T}_{X} \raisebox{-0.12em}{$V_k(\mathbb{R}^{n})$} 
+}
+
+\newcommand{\tspaceC}{
+	\mathit{T}_{X} \raisebox{-0.12em}{$V_k(\mathbb{C}^{n})$} 
+}
+
+\newcommand{\nspace}{
+	\mathit{N}_{X} \raisebox{0em}{$V_k(\mathbb{R}^{n})$} 
+}
+
+\newcommand{\nspaceC}{
+	\mathit{N}_{X} \raisebox{0em}{$V_k(\mathbb{C}^{n})$} 
+}
+
+
+Thefore, 
+\begin{equation}
+\begin{aligned}
+&\operatorname{dim}  V_k(\mathbb{R}^{n}) \,\big|_{n = 2, k=1} = \operatorname{dim} \tspace
+ =   1       \\
+&\operatorname{dim}  V_k(\mathbb{C}^{n}) \,\big|_{n = 1, k=1} = 
+\operatorname{dim} \tspaceC = 
+1 
+\end{aligned}
+\end{equation} 
+
+The number $\frac{1}{2}k(k+1) = k^{2} = 1 $ (where $k = 1$) is the dimension of the normal space 
+$\nspace$ or $\nspaceC$ for all $X$. 
+	
+	
+%\balance
+%\bibliographystyle{IEEEtran}
+%\bibliography{liaoliang}
+
+
+
+\end{document}

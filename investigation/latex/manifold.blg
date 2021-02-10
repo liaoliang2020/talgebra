@@ -1,0 +1,15 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: manifold.aux
+The style file: IEEEtran.bst
+I couldn't open database file liaoliang.bib
+---line 3 of file manifold.aux
+ : \bibdata{liaoliang
+ :                   }
+I'm skipping whatever remains of this command
+I found no \citation commands---while reading file manifold.aux
+I found no database files---while reading file manifold.aux
+-- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+(There were 3 error messages)

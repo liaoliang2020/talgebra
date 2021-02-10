@@ -1,9 +1,9 @@
-function Stiefel_manifold(X, Z)
+function Stiefel_manifold
 	clear; close all; clc;
 	disp('Stiefel_manifold');
 
 	row_num = 11;
-	col_num = 3;
+	col_num = 2;
 
 	X = orth(randn(row_num, col_num) + i * randn(row_num, col_num) );
 	
@@ -13,6 +13,7 @@ function Stiefel_manifold(X, Z)
 		index
 		Z = randn(row_num, col_num) + i * randn(row_num, col_num);
 		[T, N] = Stiefel_manifold_sub(X, Z, row_num);
+
 
 		assert(~isreal(T));
 		assert(~isreal(N));

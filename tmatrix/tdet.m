@@ -1,6 +1,7 @@
 function tresult_scalar = tdet(tmatrix, tsize)
 	% 20190121
 	% checked
+	% this function return the deteminant of a t-matrix
 
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);

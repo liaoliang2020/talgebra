@@ -21,3 +21,15 @@
   journal={arXiv preprint arXiv:2101.06650},
   year={2021}
 }
+
+
+@article{ren2017hyperspectral,
+  title={Hyperspectral image spectral-spatial feature extraction via tensor principal component analysis},
+  author={Ren, Yuemei and Liao, Liang and Maybank, Stephen John and Zhang, Yanning and Liu, Xin},
+  journal={IEEE Geoscience and Remote Sensing Letters},
+  volume={14},
+  number={9},
+  pages={1431--1435},
+  year={2017},
+  publisher={IEEE}
+}

@@ -25,11 +25,6 @@ function Stiefel_manifold2
 		N = [N_prime, zeros(row_num, 1) ];
 		T = [T_prime, Z(:, col_num + 1) ];
 
-
-		% liao_ext = ctranspose(X) * T + ctranspose(ctranspose(X) * T)
-		% pause;
-
-
 		assert(~isreal(N));
 		assert(~isreal(T));
 		assert(norm(N + T - Z, 'fro') < 1e-8 );

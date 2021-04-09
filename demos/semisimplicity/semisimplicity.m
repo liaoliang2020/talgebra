@@ -1,5 +1,5 @@
 function semisimplicity
-	% This verifies the idempotent decomposition (also known direct product decomposition) 
+	% This verifies the idempotent decomposition (also known direct product decomposition) and
 	% is equal to the Fourier transform 
 
 	clear; close all; clc;

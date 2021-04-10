@@ -1,6 +1,6 @@
 function tensor_product = tensormultiplication(standard_matrix, tensor, mod_k)
 	assert(ismatrix(standard_matrix));
-	assert(isnumeric(tensor) & ~ismatrix(tensor));
+	%assert(isnumeric(tensor) & ~ismatrix(tensor));
 	assert(ismember(mod_k, 1: ndims(tensor) ));
 	assert(size(standard_matrix, 2) == size(tensor, mod_k));
 	

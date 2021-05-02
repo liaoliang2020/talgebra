@@ -23,7 +23,8 @@ function code001_sub(given_rank)
 
 	N = 3;
 	W = fourier_matrix(N);
-	W = circshift(W, [0, 1]);
+	% W = W(:, 1:3);
+	% W = circshift(W, [0, 2]);
 	inv_W = pinv(W);
 
 
@@ -61,6 +62,10 @@ function code001_sub(given_rank)
 
 	PSNR_value = PSNR(double(imread('cameraman.tif')), squeeze(approximation(2, 2, :, :)));
 
+	file_name_full = sprintf('%s\\%s', pwd, 'code001_canonical_fft_central_neighborhood_3x3.txt');
+	fid = fopen(file_name_full, 'a+');
 	fprintf('rank = %d \t PSNR_value = %f \n', given_rank, PSNR_value);
+	fprintf(fid, 'rank = %d \t PSNR_value = %f \n', given_rank, PSNR_value);
+	fclose(fid);
 
 end

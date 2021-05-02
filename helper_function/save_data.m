@@ -11,7 +11,7 @@ function save_data(path, file_name, data_name)
 	
 	file_name_full = sprintf('%s\\%s', path, file_name);
 	command = sprintf('save %s %s -v7.3;', file_name_full, data_name);
-	evalin('caller', command);
 	disp(command);
+	evalin('caller', command);
 
 end

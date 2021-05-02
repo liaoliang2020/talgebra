@@ -1,4 +1,3 @@
-
 function result_tensor = tensorouterproductor_sub(tensor1, tensor2)
 	
 	assert(isnumeric(tensor1));

@@ -76,12 +76,14 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode, file_p
 
 	
 	if isequal(mode, 'central')
-		%save_data(save_dir, 'central_neighorhood_layer001', 'neighorhood_layer001');
-		save_data(save_dir, 'central_neighorhood_layer001_single_index', 'neighorhood_layer001_single_index');
+		file_name = sprintf('row_num%05d_col_num%05d_central_neighorhood_layer001_single_index', row_num, col_num);
+
+		save_data(save_dir, file_name, 'neighorhood_layer001_single_index');
 	else 
 		assert(isequal(mode, 'inception'));
-		%save_data(save_dir, 'inception_neighorhood_layer001', 'neighorhood_layer001');
-		save_data(save_dir, 'inception_neighorhood_layer001_single_index', 'neighorhood_layer001_single_index');
+		
+		file_name = sprintf('row_num%05d_col_num%05d_inception_neighorhood_layer001_single_index', row_num, col_num);
+		save_data(save_dir, file_name, 'neighorhood_layer001_single_index');
 	end
 
 	if layer_num == 1
@@ -121,12 +123,13 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode, file_p
 	neighorhood_layer002 = reshape(neighorhood_layer002, 2, prod([tsize, tsize]), prod([row_num, col_num]));
 	
 	if isequal(mode, 'central')
-		%save_data(save_dir, 'central_neighorhood_layer002', 'neighorhood_layer002');
-		save_data(save_dir, 'central_neighorhood_layer002_single_index', 'neighorhood_layer002_single_index');
+		file_name = sprintf('row_num%05d_col_num%05d_central_neighorhood_layer002_single_index', row_num, col_num);
+		save_data(save_dir, file_name, 'neighorhood_layer002_single_index');
 	else 
 		assert(isequal(mode, 'inception'));
-		%save_data(save_dir, 'inception_neighorhood_layer002', 'neighorhood_layer002');
-		save_data(save_dir, 'inception_neighorhood_layer002_single_index', 'neighorhood_layer002_single_index');
+		
+		file_name = sprintf('row_num%05d_col_num%05d_inception_neighorhood_layer002_single_index', row_num, col_num);
+		save_data(save_dir, file_name, 'neighorhood_layer002_single_index');
 	end
 
 	if layer_num == 2
@@ -167,12 +170,12 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode, file_p
 	
 
 	if isequal(mode, 'central')
-		%save_data(save_dir, 'central_neighorhood_layer003', 'neighorhood_layer003');
-		save_data(save_dir, 'central_neighorhood_layer003_single_index', 'neighorhood_layer003_single_index');	
+		file_name = sprintf('row_num%05d_col_num%05d_central_neighorhood_layer003_single_index', row_num, col_num);
+		save_data(save_dir, file_name, 'neighorhood_layer003_single_index');	
 	else 
 		assert(isequal(mode, 'inception'));
-		%save_data(save_dir, 'inception_neighorhood_layer003', 'neighorhood_layer003');
-		save_data(save_dir, 'inception_neighorhood_layer003_single_index', 'neighorhood_layer003_single_index');
+		file_name = sprintf('row_num%05d_col_num%05d_inception_neighorhood_layer003_single_index', row_num, col_num);
+		save_data(save_dir, file_name, 'neighorhood_layer003_single_index');
 	end
 
 

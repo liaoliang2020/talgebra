@@ -26,7 +26,7 @@ function tmatrix_result = tmultiplication(tmatrix1, tmatrix2, tsize)
 		tmatrix2 = fft(tmatrix2, [], i);	
 	end
 
-	
+
 
 	tmatrix1 = reshape(tmatrix1, prod(tsize), row_num1,  col_num1);
 	tmatrix2 = reshape(tmatrix2, prod(tsize), row_num2,  col_num2);

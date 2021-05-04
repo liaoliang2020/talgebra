@@ -25,7 +25,7 @@ function [TU, TS, TV] = tsvd(tmatrix, tsize, transform, itransform)
 
 	
 	transformed_size = size(tmatrix);
-	transformed_tsize = transformed_size(1: numel(tsize) )
+	transformed_tsize = transformed_size(1: numel(tsize) );
 
 	tmatrix = reshape(tmatrix, prod(transformed_tsize), row_num,  col_num);
 

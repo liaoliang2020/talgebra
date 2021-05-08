@@ -1,5 +1,6 @@
 function tensor_result = canonical_tensor_out_prod(tensor1, tensor2)
-
+	%This function returns the outer product of two tensors 
+	
 	assert(isnumeric(tensor1) & isnumeric(tensor2));
 	
 	

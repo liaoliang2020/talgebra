@@ -1,11 +1,6 @@
-function [TU, TS, TV] = tsvd(tmatrix, tsize, transform, itransform)
+function [TU, TS, TV] = tsvd(tmatrix, tsize)
 	% checked
 	% checked
-
-	if nargin == 2
-		transform = @fft;
-		itransform = @ifft;
-	end
 
 	
 	assert(isequal(tsize', tsize(:)));	  
@@ -20,7 +15,7 @@ function [TU, TS, TV] = tsvd(tmatrix, tsize, transform, itransform)
 
 
 	for i = 1: numel(tsize)
-		tmatrix = transform(tmatrix, [], i);		
+		tmatrix = ifft(tmatrix, [], i);		
 	end
 
 	
@@ -57,9 +52,9 @@ function [TU, TS, TV] = tsvd(tmatrix, tsize, transform, itransform)
 	TV = reshape(TV, [transformed_tsize, size(TV, 2), size(TV, 3) ] );
 
 	for i = 1: numel(transformed_tsize)
-		TU = itransform(TU, [], i);
-		TS = itransform(TS, [], i);
-		TV = itransform(TV, [], i);		
+		TU = ifft(TU, [], i);
+		TS = ifft(TS, [], i);
+		TV = ifft(TV, [], i);		
 	end
 
 	if norm(imag(TU(:))) < 1e-6

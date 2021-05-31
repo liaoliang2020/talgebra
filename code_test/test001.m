@@ -10,12 +10,12 @@ end
 
 function test001_sub
 	tsize = [3, 3];
-	x = randn(tsize);
-	y = randn(tsize);
-	z = randn(tsize);
+	x = randn(tsize) + i * randn(tsize);
+	y = randn(tsize) + i * randn(tsize);
+	z = randn(tsize) + i * randn(tsize);
 
-	alpha1 = randn(1);
-	alpha2 = randn(1);
+	alpha1 = randn(1) + i * randn(1);
+	alpha2 = randn(1) + i * randn(1);
 
 	%---------------------------
 	right_distributivity = new_tproduct(x + y, z) - (new_tproduct(x, z) + new_tproduct(y, z)); 

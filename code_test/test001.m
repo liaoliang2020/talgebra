@@ -1,4 +1,6 @@
 function test001
+	% this test shows new_tproduct is a mulitiplication for an algbera 
+
 	clear; close all; clc;
 
 	for i = 1: 999
@@ -28,7 +30,5 @@ function test001_sub
 	%---------------------------
 	compatibility_with_scalars = new_tproduct(alpha1 * x, alpha2 * y) - (alpha1 * alpha2) * new_tproduct(x, y);
 	assert(norm(compatibility_with_scalars(:)) < 1e-6 );	
-
-
 
 end

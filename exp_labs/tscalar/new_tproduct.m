@@ -22,5 +22,10 @@ function result = new_tproduct(tscalar01, tscalar02)
 	end
 
 
+	if norm(imag(result(:))) < 1e-8
+		result = real(result);
+	end   
+
+
 	
 end

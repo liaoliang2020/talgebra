@@ -1,5 +1,6 @@
-function result_tensor = tensorouterproductor_sub(tensor1, tensor2)
-	
+function result_tensor = tensorouterproductor(tensor1, tensor2)
+	% revised on 202010613
+		
 	assert(isnumeric(tensor1));
 	assert(isnumeric(tensor2)); 
 

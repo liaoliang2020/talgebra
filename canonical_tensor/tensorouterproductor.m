@@ -8,4 +8,6 @@ function result_tensor = tensorouterproductor(tensor1, tensor2)
 	result_tensor = tensor1(:) * ctranspose(tensor2(:));
 	result_tensor = reshape(result_tensor, [size(tensor1), size(tensor2)]);
 
+	result_tensor = squeeze(result_tensor);
+
 end

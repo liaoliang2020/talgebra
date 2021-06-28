@@ -26,6 +26,11 @@ function tresult = tpinv(tmatrix, tsize)
 
 	for i = 1: prod(tsize)
 		slice = reshape(tmatrix(i, :, :), row_num, col_num);
+		
+		
+		if norm(slice(:)) < 1e-8
+			slice = zeros(size(slice));
+		end
 
 		tresult(i, :, :) = pinv(slice);
 

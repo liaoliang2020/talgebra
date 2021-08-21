@@ -6,18 +6,20 @@ function test003
 
 	tmatrix = randn([tsize, row_num, col_num]) + i * randn([tsize, row_num, col_num]);
 	
-	% matrix = tmatrix2matrix(tmatrix, tsize);
+	matrix = tmatrix2matrix(tmatrix, tsize);
 	% whos tmatrix
 	% whos matrix;
 
-	% liao0 = norm(matrix, 'F')
-	% liao2 = norm(svd(matrix, 'econ'))
+	liao0 = norm(matrix, 'F')
+	liao2 = norm(svd(matrix, 'econ'))
 
 	generalized_norm2 = tnorm(tmatrix, tsize, 'fro')
 
-	% liao3 = tscalar2matrix(generalized_norm2);
-	% liao3 = trace(liao3 * liao3);
-	% liao3 = sqrt(liao3)
+	liao3 = tscalar2matrix(generalized_norm2);
+	liao3 = trace(liao3 * liao3);
+	liao3 = sqrt(liao3)
+
+	return;
 
 	generalized_norm3 = 0;
 	tmatrix_reshaped = reshape(tmatrix, [prod(tsize), row_num * col_num]);

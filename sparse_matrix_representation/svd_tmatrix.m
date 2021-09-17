@@ -1,4 +1,6 @@
 function [U, S, V] = svd_tmatrix(tmatrix, tsize)
+	%this file is not completed. 
+	
 	assert(isequal(tsize', tsize(:)));
 	assert(ndims(tmatrix) - numel(tsize) == 2 |  ndims(tmatrix) - numel(tsize) == 1 | ndims(tmatrix) - numel(tsize) == 0);
 	

@@ -12,8 +12,6 @@ function tscalar_result = gtensor_inner_product(gtensor1, gtensor2, tsize)
 	end
 
 
-	
-
 	gtensor1 = reshape(gtensor1, prod(tsize), []);
 	gtensor2 = reshape(gtensor2, prod(tsize), []);
 	

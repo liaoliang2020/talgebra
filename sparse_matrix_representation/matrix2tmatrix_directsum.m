@@ -29,7 +29,4 @@ function matrix2tmatrix_directsum(matrix, tsize)
 	for k = 1: numel(tsize)
 		tmatrix = ifft(tmatrix, [], k);		
 	end
-
-
-
 end

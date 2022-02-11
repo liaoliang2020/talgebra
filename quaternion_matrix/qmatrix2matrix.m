@@ -1,4 +1,4 @@
-function matrix = qmatrix2matrix
+function matrix = qmatrix2matrix(qmatrix)
 	assert(numel(size(qmatrix)) == 2);
 
 	row_num = size(qmatrix, 1);
@@ -16,8 +16,9 @@ function matrix = qmatrix2matrix
 	matrix = zeros(2 * [row_num, col_num] );
 
 	index = 0;
-	for k = 1: 2
-		for j = 1: 2
+	
+	for j = 1: 2
+		for k = 1: 2
 			index = index + 1;
 
 			row_index1 = (k - 1) * row_num + 1;
@@ -31,9 +32,9 @@ function matrix = qmatrix2matrix
 				case 1   
 				 	matrix(row_index1: row_index2, col_index1: col_index2) = Q1;
 				case 2
-					matrix(row_index1: row_index2, col_index1: col_index2) = Q2;
-				case 3
 					matrix(row_index1: row_index2, col_index1: col_index2) = -conj(Q2);
+				case 3
+					matrix(row_index1: row_index2, col_index1: col_index2) = Q2;
 				case 4
 					matrix(row_index1: row_index2, col_index1: col_index2) = conj(Q1);
 				otherwise
@@ -41,8 +42,8 @@ function matrix = qmatrix2matrix
 			end%switch index		 
 		
 
-		end%for j = 1: 2
-	end%for k = 1: 2
+		end%for k = 1: 2
+	end%for j = 1: 2
 
 
 

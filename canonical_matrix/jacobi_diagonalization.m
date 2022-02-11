@@ -1,15 +1,4 @@
-function jacobi_diagonalization
-	clear; close all; clc;
-
-	A = randn(7) + sqrt(-1) * randn(7);
-	B  = A + A'
-
-	liaoliang = jacobi_diagonalization_sub(B)
-
-
-end
-
-function diagonalized_matrix = jacobi_diagonalization_sub(hermitian_matrix)
+function diagonalized_matrix = jacobi_diagonalization(hermitian_matrix)
 	assert(norm(hermitian_matrix' - hermitian_matrix, 'fro') < 1e-6);
 
 	row_col_num = size(hermitian_matrix, 1);

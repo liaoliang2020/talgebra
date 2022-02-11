@@ -1,0 +1,35 @@
+@article{liao2020generalized,
+  title={Generalized visual information analysis via tensorial algebra},
+  author={Liao, Liang and Maybank, Stephen John},
+  journal={Journal of Mathematical Imaging and Vision},
+  pages={560--584},
+  year={2020},
+  publisher={Springer}
+}
+
+@article{liao2020general,
+  title={General Data Analytics With Applications To Visual Information Analysis: A Provable Backward-Compatible Semisimple Paradigm Over T-Algebra},
+  author={Liao, Liang and Maybank, Stephen John},
+  journal={arXiv preprint arXiv:2011.00307},
+  year={2020}
+}
+
+
+@article{liao2021generalImg,
+  title={Generalized Image Reconstruction over T-Algebra},
+  author={Liao, Liang and Zhang, Xuechunand Wang, Xinqiang and Lin, Sen and Liu, Xin},
+  journal={arXiv preprint arXiv:2101.06650},
+  year={2021}
+}
+
+
+@article{ren2017hyperspectral,
+  title={Hyperspectral image spectral-spatial feature extraction via tensor principal component analysis},
+  author={Ren, Yuemei and Liao, Liang and Maybank, Stephen John and Zhang, Yanning and Liu, Xin},
+  journal={IEEE Geoscience and Remote Sensing Letters},
+  volume={14},
+  number={9},
+  pages={1431--1435},
+  year={2017},
+  publisher={IEEE}
+}

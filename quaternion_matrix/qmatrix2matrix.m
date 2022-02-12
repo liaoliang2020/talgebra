@@ -18,8 +18,8 @@ function matrix = qmatrix2matrix(qmatrix)
 
 	index = 0;
 	
-	for j = 1: 2
-		for k = 1: 2
+	for j = 1: 2  			%column index
+		for k = 1: 2      	%row index
 			index = index + 1;
 
 			row_index1 = (k - 1) * row_num + 1;

@@ -19,7 +19,6 @@ function qmatrix = matrix2qmatrix(matrix)
 	assert(norm(conj(Q1) - matrix((row_num + 1): end, (col_num + 1): end), 'fro') < 1e-6);
 
 	qmatrix = quaternion(real(Q1), imag(Q1), real(Q2), imag(Q2));
-	   
 
 end
 

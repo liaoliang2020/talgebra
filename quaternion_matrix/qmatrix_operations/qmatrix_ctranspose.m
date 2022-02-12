@@ -4,7 +4,7 @@ function result = qmatrix_ctranspose(qmatrix)
 	 
 	result = conj(permute(qmatrix, [2 1]));
 
-	% The above statement is equivalent to the following statement 
-	% result = matrix2qmatrix(ctranspose(qmatrix2matrix(qmatrix)) )
+	% The above statement IS Equivalent to the following statement 
+	% result = matrix2qmatrix(ctranspose(qmatrix2matrix(qmatrix)) );
 
 end

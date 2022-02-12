@@ -1,4 +1,5 @@
 function matrix = qmatrix2matrix(qmatrix)
+	assert(isequal(class(qmatrix), 'quaternion') );
 	assert(numel(size(qmatrix)) == 2);
 
 	row_num = size(qmatrix, 1);

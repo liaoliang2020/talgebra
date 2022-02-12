@@ -1,4 +1,4 @@
-function qmatrix = matrix2qmatrix_sub(matrix)
+function qmatrix = matrix2qmatrix(matrix)
 	% this return the qmatrix representaed by a matrix.  
 
 	assert(numel(size(matrix)) <= 2);

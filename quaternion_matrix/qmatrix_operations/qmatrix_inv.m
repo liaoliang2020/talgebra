@@ -5,9 +5,9 @@ function result = qmatrix_inv(qmatrix)
 	assert(numel(size(qmatrix)) == 2);
 	assert(size(qmatrix, 1) == size(qmatrix, 2));
 
-	matrix = qmatrix2matrix(qmatrix)
+	matrix = qmatrix2matrix(qmatrix);
 	
-	assert(min(size(matrix)) = rank(matrix));
+	assert(min(size(matrix)) == rank(matrix));
 	result = matrix2qmatrix(inv(matrix)); 
 
 end

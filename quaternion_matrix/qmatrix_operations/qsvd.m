@@ -1,4 +1,4 @@
-function [QU, QS, QV] = qsvd(qmatrix)
+function [QU, QS, QV] = qsvd_sub(qmatrix)
 	% this function computes the SVD of a quaternion matrix 
 
 	assert(isequal(class(qmatrix), 'quaternion') );

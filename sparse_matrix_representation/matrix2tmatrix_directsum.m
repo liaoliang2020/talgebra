@@ -1,6 +1,11 @@
-function matrix2tmatrix_directsum(matrix, tsize)
+function tmatrix = matrix2tmatrix_directsum(matrix, tsize)
 	% This function returns the tmatrix represented by a direct sum matrix
 	assert(isequal(tsize', tsize(:)));
+	assert(numel(size(matrix)) == 2);
+
+	 
+	
+	K = prod(tsize);
 	assert(mod(size(matrix, 1), K) == 0);
 	assert(mod(size(matrix, 2), K) == 0);
 

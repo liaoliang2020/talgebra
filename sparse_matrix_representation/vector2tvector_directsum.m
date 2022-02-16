@@ -18,17 +18,6 @@ function tvector = vector2tvector_directsum(vector, tsize)
 
 	end
 
-	% for i = 1: row_num
-	% 	row_index1 = (i - 1) *  K + 1;
-	% 	row_index2 = row_index1 + K -1;
-	%
-	% 	temp = vector(row_index1: row_index2);
-	% 	temp = diag(temp);
-	%
-	% 	matrix(row_index1: row_index2, :) = temp; 
-	%
-	% end
-
 	tvector = matrix2tmatrix_directsum(matrix, tsize); 
 	assert(size(tvector, numel(tsize) + 2) == 1 ); 
 

@@ -1,4 +1,4 @@
-function realvector = quaternion2realvector(quaternion_num)
+function realvector = qscalar2realvector(quaternion_num)
 	assert(isequal(class(quaternion_num), 'quaternion') );
 	assert(isequal(size(quaternion_num), [1 1]));
 

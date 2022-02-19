@@ -1,4 +1,4 @@
-function realmatrix = quaternion2realmatrix(quaternion_num)
+function realmatrix = qscalar2realmatrix(quaternion_num)
 	assert(isequal(class(quaternion_num), 'quaternion') );
 	assert(isequal(size(quaternion_num), [1 1]));
 

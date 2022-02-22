@@ -1,4 +1,7 @@
 function tmatrix = matrix2tmatrix(matrix, tsize)
+	% This funcition convert a complex matrix to its t-matrix version  
+
+
 	assert(isequal(tsize', tsize(:)));
 	K = prod(tsize);
 

@@ -15,17 +15,15 @@ function code001
 			%-----------------
 			liaoliang = 0;
 			liaoliang2 = 0;
-			for i = 1: row_num
-				for j = 1: col_num
-					liaoliang = liaoliang + qmatrix(u, v) * F1(u, i) * F2(v, j); 
-					liaoliang2 = liaoliang2 + F1(u, i) * F2(v, j) * qmatrix(u, v);
-					
-					
-				end%for j = 1: col_num
-			end%for i = 1: row_num
+			for m = 1: row_num
+				for n = 1: col_num
+					liaoliang = liaoliang + qmatrix(m, n) * F1(u, m) * F2(v, n); 
+					liaoliang2 = liaoliang2 + F1(u, m) * F2(v, n) * qmatrix(m, n);
+									
+				end%for n = 1: col_num
+			end%for m = 1: row_num
 
-			assert(norm(compact(liaoliang - liaoliang2), 'fro') < 1e-6 );
-			norm(compact(liaoliang - liaoliang2))
+			% assert(norm(compact(liaoliang - liaoliang2), 'fro') < 1e-6 );
 			
 
 			qmatrix_CQDFT(u, v) =  liaoliang;
@@ -34,8 +32,29 @@ function code001
 		end%for v = 1: col_num
 	end%for u = 1: row_num
 	
-	assert(norm(compact(qmatrix_CQDFT - qmatrix_CQDFT2 ), 'fro') < 1e-6 );
+	qmatrix_CQDFT - qmatrix_CQDFT2	
+
+
+	% assert(norm(compact(qmatrix_CQDFT - qmatrix_CQDFT2 ), 'fro') < 1e-6 );
+
+
 	
+
+	qmatrix_CQDFT3 = qtensormultiplication(F1, qmatrix, 1);
+	qmatrix_CQDFT3 = qtensormultiplication(F2, qmatrix_CQDFT3, 2);
+
+
+	% qmatrix_CQDFT4 = qmatrix_multiplication(F1, qmatrix);
+	% qmatrix_CQDFT4 = qmatrix_multiplication(F2, permute(qmatrix_CQDFT4, [2 1]) );
+	% qmatrix_CQDFT4 = permute(qmatrix_CQDFT4, [2 1]);
+
+	f32 = qmatrix_CQDFT3 - qmatrix_CQDFT2;
+	f31 = qmatrix_CQDFT3 - qmatrix_CQDFT;
+
+	norm(compact(f32), 'fro')
+
+	norm(compact(f31), 'fro')
+
 
 end
 

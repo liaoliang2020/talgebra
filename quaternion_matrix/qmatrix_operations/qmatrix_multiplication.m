@@ -12,4 +12,10 @@ function result = qmatrix_multiplication(qmatrix1, qmatrix2)
 	result = qmatrix2matrix(qmatrix1) * qmatrix2matrix(qmatrix2);
 	result = matrix2qmatrix(result);
 
+
+	qmatrix2matrix()
+
+
+
+
 end

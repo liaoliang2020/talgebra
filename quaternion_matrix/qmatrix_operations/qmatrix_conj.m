@@ -1,4 +1,4 @@
-function result = qmatrix_conj_sub(qmatrix)
+function result = qmatrix_conj(qmatrix)
 	% this function returns conjugate of each quaternion entry of this array	
 
 	assert(isequal(class(qmatrix), 'quaternion') );

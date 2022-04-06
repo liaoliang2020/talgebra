@@ -1,4 +1,7 @@
 function matrix = qmatrix2matrix(qmatrix)
+	% this function returns the complex matrix representation of a qmatrix
+	% the returned complex matrix is of two size  of the input qmatrix
+	
 	assert(isequal(class(qmatrix), 'quaternion') );
 	assert(numel(size(qmatrix)) == 2);
 
@@ -45,7 +48,9 @@ function matrix = qmatrix2matrix(qmatrix)
 
 		end%for k = 1: 2
 	end%for j = 1: 2
-
+	
+	
+	
 
 
 end

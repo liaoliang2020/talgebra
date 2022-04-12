@@ -32,7 +32,7 @@ function code001
 		end%for v = 1: col_num
 	end%for u = 1: row_num
 	
-	qmatrix_CQDFT - qmatrix_CQDFT2	
+	f12 = qmatrix_CQDFT - qmatrix_CQDFT2;	
 
 
 	% assert(norm(compact(qmatrix_CQDFT - qmatrix_CQDFT2 ), 'fro') < 1e-6 );
@@ -52,8 +52,9 @@ function code001
 	f31 = qmatrix_CQDFT3 - qmatrix_CQDFT;
 
 	norm(compact(f32), 'fro')
-
 	norm(compact(f31), 'fro')
+	
+	norm(compact(f12), 'fro')
 
 
 end

@@ -10,8 +10,13 @@
 	% the row number of the right qmatrix 
 	assert(size(qmatrix1, 2) == size(qmatrix2, 1) );
 
-	result = transpose(qmatrix2matrix(qmatrix2))  * transpose(qmatrix2matrix(qmatrix1)) ;
-	result = matrix2qmatrix(transpose(result));
+	result = qmatrix2matrix(transpose(qmatrix2) ) * qmatrix2matrix(transpose(qmatrix1) );	
+	result = matrix2qmatrix(result);
+	result = transpose(result);
+
+
+	% result = transpose(qmatrix2matrix(qmatrix2))  * transpose(qmatrix2matrix(qmatrix1)) ;
+	% result = matrix2qmatrix(transpose(result));
 	
 
  end

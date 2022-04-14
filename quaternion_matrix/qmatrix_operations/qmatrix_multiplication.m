@@ -12,11 +12,11 @@ function result = qmatrix_multiplication(qmatrix1, qmatrix2)
 	result = qmatrix2matrix(qmatrix1) * qmatrix2matrix(qmatrix2);
 	result = matrix2qmatrix(result);
 
-
+	%---------------------------------
 	% the qmatrix "result" is identical to the qmatrix "result_another_version"
 	% the following two lines might be removed in the future  
-
-	result_another_version = matrix2qmatrix_another_version(qmatrix2matrix_another_version(qmatrix1) * qmatrix2matrix_another_version(qmatrix2) );
-	assert(norm(compact(result - result_another_version), 'fro') < 1e-6 );
+	%---------------------------------
+	% result_another_version = matrix2qmatrix_another_version(qmatrix2matrix_another_version(qmatrix1) * qmatrix2matrix_another_version(qmatrix2) );
+	% assert(norm(compact(result - result_another_version), 'fro') < 1e-6 );
 
 end

@@ -2,7 +2,10 @@ function [TU, TS, TV] = tsvd(tmatrix, tsize)
 	% checked
 	% checked
 
-	
+	% The following is added by liaoliang on 2022.04.21
+	assert(isequal(class(tmatrix), 'double'));
+	 
+
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1 | ndims(tmatrix) - numel(tsize) == 0);
 
@@ -22,11 +25,11 @@ function [TU, TS, TV] = tsvd(tmatrix, tsize)
 	tmatrix = reshape(tmatrix, [prod(tsize), row_num, col_num]);
 
 	for i = 1: prod(tsize)
-		slice_tmatrix = squeeze(tmatrix(i, :, :));
+		slice_tmatrix = tmatrix(i, :, :);
 		slice_tmatrix = reshape(slice_tmatrix, row_num, col_num);
 
 
-		[U, S, V] = svd(slice_tmatrix, 'econ');		
+				
 
 		if i == 1
 			TU = zeros([prod(tsize), size(U) ] );
@@ -58,7 +61,7 @@ function [TU, TS, TV] = tsvd(tmatrix, tsize)
 	
 
 
-	%for i = 1: numel(transformed_tsize)
+	%compute the inverse fourier transform
 	for i = 1: numel(tsize)
 		TU = ifft(TU, [], i);
 		TS = ifft(TS, [], i);

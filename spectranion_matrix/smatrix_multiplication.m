@@ -36,7 +36,7 @@ function smatrix_result = smatrix_multiplication(smatrix1, smatrix2, tsize)
 		slice_smatrix1 = reshape(slice_smatrix1, row_num1, col_num1);
 		slice_smatrix2 = reshape(slice_smatrix2, row_num2, col_num2);
 
-		% the following is to compute the product of two q-matrices
+		% the following line is to compute the product of two q-matrices
 		result = qmatrix_multiplication(slice_smatrix1, slice_smatrix2);
 
 		
@@ -54,7 +54,7 @@ function smatrix_result = smatrix_multiplication(smatrix1, smatrix2, tsize)
 
 
 	for i = 1: numel(tsize)
-		smatrix_results = iffts(smatrix_result, [], i);		
+		smatrix_result = iffts(smatrix_result, [], i);		
 	end
 	
 	

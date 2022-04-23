@@ -10,5 +10,11 @@ function result = qmatrix_multiplication_arg3(qmatrix1, qmatrix2, qmatrix3)
 		
 	result = qmatrix2matrix(qmatrix1) * qmatrix2matrix(qmatrix2) * qmatrix2matrix(qmatrix3);
 	result = matrix2qmatrix(result);
+	
+	%----------------
+	%result2 = qmatrix_multiplication(qmatrix1, qmatrix2);
+	%result2 = qmatrix_multiplication(result2, qmatrix3);	
+	%assert(norm(compact(result - result2), 'fro') < 1e-6);
+	
 
 end

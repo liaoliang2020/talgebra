@@ -17,17 +17,11 @@ function test
 	whos SV;
 
 	approximation = smatrix_multiplication_arg3(SU, SS, smatrix_ctranspose(SV, tsize), tsize);
-
-	norm(compact(approximation - smatrix), 'fro')
-
-
-	save approximation approximation;
-	save smatrix smatrix;
-
-
-
-
 	
+	assert(norm(compact(approximation - smatrix), 'fro') < 1e-6);
+	
+
+
 
 
 end

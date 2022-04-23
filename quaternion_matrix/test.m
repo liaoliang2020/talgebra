@@ -1,44 +1,31 @@
 function test
 	clear; close all; clc;
-	M = 3;
-	N = 5;
-	D = 2;
 	
-	qmatrix1 = quaternion(randn(M * N, 4) );
-	qmatrix1 = reshape(qmatrix1, [M N]);
+	row_num = 7;
+	col_num = 5;
 
-	qmatrix2 = quaternion(randn(N * D, 4) );
-	qmatrix2 = reshape(qmatrix2, [N D]); 
+	qmatrix = quaternion(randn(row_num * col_num, 4));
+	qmatrix = reshape(qmatrix, [row_num, col_num]);
 
-	result = qmatrix_multiplication(qmatrix1, qmatrix2);
-	result_transpose_version = qmatrix_multiplication_transpose_version(qmatrix1, qmatrix2);
+	[QU, QS, QV] = qmatrix_svd(qmatrix);
 
-	residual = result - result_transpose_version;
+	whos qmatrix
+	whos QU;
+	whos QS;
+	whos QV;
 
-	assert(norm(compact(residual), 'fro') > 1e-6);
 
-	for m = 1: M 
-		for d = 1: D 
-			liaoliang = 0;
-			for n = 1: N
-				liaoliang = liaoliang + qmatrix1(m, n) * qmatrix2(n, d);
-			end
-			C(m, d) = liaoliang;
-		end
-	end
+	liaoliang = qmatrix_multiplication_arg3(QU, QS, qmatrix_ctranspose(QV)) - qmatrix;
 
-	assert(norm(compact(result - C), 'fro') < 1e-6);
+	norm(compact(liaoliang), 'fro')
+	
 
-	for m = 1: M 
-		for d = 1: D 
-			liaoliang = 0;
-			for n = 1: N
-				liaoliang = liaoliang + qmatrix2(n, d) * qmatrix1(m, n);
-			end
-			C2(m, d) = liaoliang;
-		end
-	end
 
-	assert(norm(compact(result_transpose_version - C2)) < 1e-6);
+
+
+
+
+
+
 
 end

@@ -16,7 +16,8 @@ function [SU, SS, SV] = smatrix_svd(smatrix, tsize)
 
 	% Compute the fourier transform over quaternions
 	for i = 1: numel(tsize)
-		smatrix = qtensormultiplication(quaternionize(fourier_matrix(tsize(i))), smatrix, i);		
+		% smatrix = qtensormultiplication(quaternionize(fourier_matrix(tsize(i))), smatrix, i);		
+		smatrix = ffts(smatrix, [], i); 
 	end
 
 	smatrix = reshape(smatrix, [prod(tsize), row_num, col_num]);
@@ -52,9 +53,13 @@ function [SU, SS, SV] = smatrix_svd(smatrix, tsize)
 
 	% compute inverse fourier transform over quaternions
 	for i = 1: numel(tsize)
-		SU = qtensormultiplication(quaternionize(inv(fourier_matrix(tsize(i) ))), SU, i);	
-		SS = qtensormultiplication(quaternionize(inv(fourier_matrix(tsize(i) ))), SS, i);	
-		SV = qtensormultiplication(quaternionize(inv(fourier_matrix(tsize(i) ))), SV, i);
+		% SU = qtensormultiplication(quaternionize(ifourier_matrix(tsize(i))), SU, i);	
+		% SS = qtensormultiplication(quaternionize(ifourier_matrix(tsize(i))), SS, i);	
+		% SV = qtensormultiplication(quaternionize(ifourier_matrix(tsize(i))), SV, i);
+
+		SU = iffts(SU, [], i);	
+		SS = iffts(SS, [], i);	
+		SV = iffts(SV, [], i);
 	end
 
 

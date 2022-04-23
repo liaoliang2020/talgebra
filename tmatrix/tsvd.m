@@ -28,8 +28,7 @@ function [TU, TS, TV] = tsvd(tmatrix, tsize)
 		slice_tmatrix = tmatrix(i, :, :);
 		slice_tmatrix = reshape(slice_tmatrix, row_num, col_num);
 
-
-				
+		[U, S, V] = svd(slice_tmatrix, 'econ');		
 
 		if i == 1
 			TU = zeros([prod(tsize), size(U) ] );

@@ -3,6 +3,12 @@ function tmatrix_result = tmultiplication(tmatrix1, tmatrix2, tsize)
 	% checked
 	% checked
 
+	% the following two lines were added by liaoliang 
+	% on 2022.04.22 to make sure 
+	% tmatrix1 and tmatrix2 are complex arrays.
+	assert(isequal(class(tmatrix1), 'double'));
+	assert(isequal(class(tmatrix2), 'double'));
+	
 	
 	assert(isequal(tsize', tsize(:)));	 	
 	

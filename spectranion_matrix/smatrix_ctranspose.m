@@ -21,7 +21,9 @@ function smatrix_result = smatrix_ctranspose(smatrix, tsize)
 
 	smatrix_result = zeros(size(smatrix));
 	smatrix_result = permute(smatrix_result, order);
-	smatrix_result = reshape(smatrix_result, prod(tsize), size(tmatrix_result, numel(tsize) + 1), size(tmatrix_result, numel(tsize) + 2) );
+	smatrix_result = reshape(smatrix_result, prod(tsize), size(smatrix_result, numel(tsize) + 1), size(smatrix_result, numel(tsize) + 2) );
+	smatrix_result = quaternionize(smatrix_result);
+
 
 
 	for i = 1: numel(tsize)

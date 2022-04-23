@@ -4,6 +4,10 @@ function tmatrix_result = tctranspose(tmatrix, tsize)
 	% checked
 	% checked
 
+	% the following line was added on 2022/04/23 by liaoliang
+	assert(isequal(class(tmatrix), 'double'));
+	
+
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 |  ndims(tmatrix) - numel(tsize) == 1 | ndims(tmatrix) - numel(tsize) == 0);
 

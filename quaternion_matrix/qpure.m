@@ -1,4 +1,4 @@
-function pure_quaternion_unit = pure(ijk)
+function pure_quaternion_unit = qpure(ijk)
 	assert(ijk == 'i' || ijk == 'j' || ijk == 'k');
 
 	switch ijk

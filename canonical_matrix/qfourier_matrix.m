@@ -4,8 +4,7 @@ function qfourier_matrix_result = qfourier_matrix(n)
 	assert(n > 0);
 	
 	qfourier_matrix_result = quaternionize(zeros(n, n));
-    qfourier_matrix_result2 = quaternionize(zeros(n, n));	
-
+    
 	const = (-2 * pi / n) * (1 / sqrt(3)) * quaternion([0, 1, 1, 1]);
 	const = repmat(const, n, n);
 	

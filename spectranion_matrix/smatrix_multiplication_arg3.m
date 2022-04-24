@@ -30,6 +30,9 @@ function smatrix_result = smatrix_multiplication_arg3(smatrix1, smatrix2, smatri
 	smatrix_result = smatrix_multiplication(smatrix_result, smatrix3, tsize);
 
 	
+
+	% smatrix_result is equal to the result "myresult" given by the following lines 
+
 	%-----------------------
 	% for i = 1: numel(tsize)
 	% 	smatrix1 = ffts(smatrix1, [], i);

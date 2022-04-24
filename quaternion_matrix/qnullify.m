@@ -1,4 +1,4 @@
-function result = qarray_nullify(qarray, eps)
+function result = qnullify(qarray, eps)
 	% this function nullifiies each quaternion entity whose norm is less than eps
 
 	if nargin == 1

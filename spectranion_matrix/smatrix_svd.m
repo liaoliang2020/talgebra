@@ -1,11 +1,23 @@
-function [SU, SS, SV] = smatrix_svd(smatrix, tsize)
+function [SU, SS, SV] = smatrix_svd(smatrix, tsize, unit_quaternionic_square_roots)
 	% this function computes the SVD of a spectranion matrix, which is a 
 	% t-matrix with quaternion entities  
-
 	assert(isequal(class(smatrix), 'quaternion') );
 
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(smatrix) - numel(tsize) == 2 | ndims(smatrix) - numel(tsize) == 1 | ndims(smatrix) - numel(tsize) == 0);
+
+	
+	%-----------------
+	if nargin == 2
+		unit_quaternionic_square_roots = quaternionize(i);
+	end
+
+	assert(isequal(class(unit_quaternionic_square_roots), 'quaternion' ));
+	assert(size(unit_quaternionic_square_roots, 1) == 1);
+
+	assert(norm(compact(unit_quaternionic_square_roots .* unit_quaternionic_square_roots ...
+		-  quaternionize((-1) * ones(size(unit_quaternionic_square_roots)))), 'fro') < 1e-8); 
+
 
 	row_num = size(smatrix, numel(tsize) + 1);
 	col_num = size(smatrix, numel(tsize) + 2);
@@ -15,29 +27,28 @@ function [SU, SS, SV] = smatrix_svd(smatrix, tsize)
 
 
 	% Compute the fourier transform over quaternions
-	for i = 1: numel(tsize)
-		% smatrix = qtensormultiplication(quaternionize(fourier_matrix(tsize(i))), smatrix, i);		
-		smatrix = ffts(smatrix, [], i); 
+	for mode_index = 1: numel(tsize)
+		smatrix = ffts(smatrix, [], mode_index, unit_quaternionic_square_roots); 
 	end
 
 	smatrix = reshape(smatrix, [prod(tsize), row_num, col_num]);
 
 
-	for i = 1: prod(tsize)
-		slice_tmatrix = smatrix(i, :, :);
+	for slice_index = 1: prod(tsize)
+		slice_tmatrix = smatrix(slice_index, :, :);
 		slice_tmatrix = reshape(slice_tmatrix, row_num, col_num);
 
 		[QU, QS, QV] = qmatrix_svd(slice_tmatrix);
 
-		if i == 1
+		if slice_index == 1
 			SU = quaternionize(zeros([prod(tsize), size(QU) ] )) ;
 			SS = quaternionize(zeros([prod(tsize), size(QS) ] ));
 			SV = quaternionize(zeros([prod(tsize), size(QV) ] ));
-		end%if i == 1
+		end%if slice_index == 1
 
-		SU(i, :, :) = QU;
-		SS(i, :, :) = QS;
-		SV(i, :, :) = QV;
+		SU(slice_index, :, :) = QU;
+		SS(slice_index, :, :) = QS;
+		SV(slice_index, :, :) = QV;
 
 	end
 
@@ -52,14 +63,10 @@ function [SU, SS, SV] = smatrix_svd(smatrix, tsize)
 
 
 	% compute inverse fourier transform over quaternions
-	for i = 1: numel(tsize)
-		% SU = qtensormultiplication(quaternionize(ifourier_matrix(tsize(i))), SU, i);	
-		% SS = qtensormultiplication(quaternionize(ifourier_matrix(tsize(i))), SS, i);	
-		% SV = qtensormultiplication(quaternionize(ifourier_matrix(tsize(i))), SV, i);
-
-		SU = iffts(SU, [], i);	
-		SS = iffts(SS, [], i);	
-		SV = iffts(SV, [], i);
+	for mode_index = 1: numel(tsize)
+		SU = iffts(SU, [], mode_index, unit_quaternionic_square_roots);	
+		SS = iffts(SS, [], mode_index, unit_quaternionic_square_roots);	
+		SV = iffts(SV, [], mode_index, unit_quaternionic_square_roots);
 	end
 
 

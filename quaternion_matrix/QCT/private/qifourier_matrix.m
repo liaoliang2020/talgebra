@@ -4,7 +4,7 @@ function result = iqfourier_matrix(n, quaternionic_square_root_of_negative_one)
 	assert(isscalar(n));
 	assert(n > 0);
 
-	if argin == 1
+	if nargin == 1
 		quaternionic_square_root_of_negative_one = sqrt(-1);
 	end
 

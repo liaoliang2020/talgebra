@@ -33,8 +33,8 @@ function smatrix_result = smatrix_multiplication(smatrix1, smatrix2, tsize, unit
 
 	% comput the multi-way quaternionic fourier transform 
 	for mode_index = 1: numel(tsize)
-		smatrix1 = ffts(smatrix1, [], mode_index, negative_one_square_root_type);
-		smatrix2 = ffts(smatrix2, [], mode_index, negative_one_square_root_type);	
+		smatrix1 = ffts(smatrix1, [], mode_index, unit_quaternionic_square_roots);
+		smatrix2 = ffts(smatrix2, [], mode_index, unit_quaternionic_square_roots);	
 	end
 
 	smatrix1 = reshape(smatrix1, prod(tsize), row_num1,  col_num1);
@@ -67,7 +67,7 @@ function smatrix_result = smatrix_multiplication(smatrix1, smatrix2, tsize, unit
 
 	% compute the inverse quaternionic fourier transform
 	for mode_index = 1: numel(tsize)
-		smatrix_result = iffts(smatrix_result, [], mode_index, negative_one_square_root_type, unit_quaternionic_square_roots);		
+		smatrix_result = iffts(smatrix_result, [], mode_index, unit_quaternionic_square_roots);		
 	end
 	
 	

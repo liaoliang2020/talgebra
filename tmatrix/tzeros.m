@@ -5,4 +5,5 @@ function tmatrix = tzeros(row_num, col_num, tsize)
 	assert(isequal(abs([row_num, col_num]), [row_num, col_num]) );
 
 	tmatrix = zeros([tsize, row_num, col_num]);
+
 end

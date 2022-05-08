@@ -2,7 +2,19 @@ function result = thadamard(tmatrix1, tmatrix2, tsize)
 	% this function computes the generalized Hamadard product of two t-matrices.  
 	
 	assert(isequal(tsize', tsize(:)));	  
-	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);
+	assert(ndims(tmatrix1) - numel(tsize) == 2 | ndims(tmatrix1) - numel(tsize) == 1| ndims(tmatrix1) - numel(tsize) == 0);
+	assert(ndims(tmatrix2) - numel(tsize) == 2 | ndims(tmatrix2) - numel(tsize) == 1| ndims(tmatrix2) - numel(tsize) == 0);
+
+	assert(isequal(size(tmatrix1), [tsize, size(tmatrix1, numel(tsize) + 1), size(tmatrix1, numel(tsize) + 2)]) | ...  
+		isequal(size(tmatrix1), [tsize, size(tmatrix1, numel(tsize) + 1) ]) | ... 
+		isequal(size(tmatrix1), tsize) ...
+	); 
+	
+	assert(isequal(size(tmatrix2), [tsize, size(tmatrix2, numel(tsize) + 1), size(tmatrix2, numel(tsize) + 2)]) | ...  
+		isequal(size(tmatrix2), [tsize, size(tmatrix2, numel(tsize) + 1) ]) | ... 
+		isequal(size(tmatrix2), tsize) ...
+	); 
+	
 
 	assert(isequal(size(tmatrix1), size(tmatrix2)) );
 	

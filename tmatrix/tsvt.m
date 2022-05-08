@@ -7,6 +7,12 @@ function approximation_tmatrix = tsvt(tmatrix, tau, tsize)
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);
 
+	assert(isequal(size(tmatrix), [tsize, size(tmatrix, numel(tsize) + 1), size(tmatrix, numel(tsize) + 2)]) | ...  
+		isequal(size(tmatrix), [tsize, size(tmatrix, numel(tsize) + 1) ]) | ... 
+		isequal(size(tmatrix), tsize) ...
+	); 
+	
+
 	% If tau is NOT t-scalar but a canonical scalar
 	% Then transform tau to a t-scalar
 	if ~isequal(size(tau), size(tsize)) & numel(tau) == 1

@@ -2,6 +2,12 @@ function approximation = tsvd_approximation(tmatrix, delta, tsize)
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);
 
+	assert(isequal(size(tmatrix), [tsize, size(tmatrix, numel(tsize) + 1), size(tmatrix, numel(tsize) + 2)]) | ...  
+		isequal(size(tmatrix), [tsize, size(tmatrix, numel(tsize) + 1) ]) | ... 
+		isequal(size(tmatrix), tsize) ...
+	); 
+	
+
 	% If delta is NOT t-scalar but a canonical scalar
 	% Then transform delta to a t-scalar
 	if ~isequal(size(delta), size(tsize)) & numel(delta) == 1

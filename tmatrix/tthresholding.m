@@ -2,6 +2,14 @@ function result = tthresholding(tmatrix, tscalar, mode, tsize)
 	% checked
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);
+	
+	assert(isequal(size(tmatrix), [tsize, size(tmatrix, numel(tsize) + 1), size(tmatrix, numel(tsize) + 2)]) | ...  
+		isequal(size(tmatrix), [tsize, size(tmatrix, numel(tsize) + 1) ]) | ... 
+		isequal(size(tmatrix), tsize) ...
+	); 
+	
+
+
 	assert(ismember(mode, {'top', 'bottom'} ));
 	assert(isequal(size(tscalar), tsize)); 
 	

@@ -24,6 +24,14 @@ function SVD4TSVD_Non_directsum_representation
 	%----------------------
 	tmatrix_ds_matrix = tmatrix2matrix(tmatrix, tsize);
 	[U2, S2, V2] = svd(tmatrix_ds_matrix, 'econ');
+	
+	U2(abs(U2) < 1e-6) = 0;
+	V2(abs(V2) < 1e-6) = 0;
+	S2(abs(S2) < 1e-6) = 0;
+	save U2 U2;
+	save V2 V2;
+	save S2 S2;
+	return;	
 
 	assert(mod(size(U2, 1), K) == 0);
 	assert(size(U2, 1) / K == row_num);

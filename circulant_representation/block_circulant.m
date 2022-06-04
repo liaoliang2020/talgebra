@@ -26,14 +26,14 @@ function circulant_matrix =  block_circulant(tmatrix, tsize)
 		index1 = k * col_num + 1;
 		index2 = (k + 1) * col_num;
 
-		circulant_matrix(:, index1: index2) = get_two_dimension_array(tmatrix(:, :, index_se_shift));
+		circulant_matrix(:, index1: index2) = get_block_column(tmatrix(:, :, index_se_shift));
 	end
 
 
 end
 
 
-function result = get_two_dimension_array(array)
+function result = get_block_column(array)
 	assert(ndims(array) == 3);
 	[row_num, col_num, fra_num] = size(array); 
 

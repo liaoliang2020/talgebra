@@ -1,4 +1,4 @@
-function circulant_matrix =  mybcirc(tmatrix, tsize)
+function circulant_matrix =  block_circulant(tmatrix, tsize)
 	
 	assert(isequal(class(tmatrix), 'double'));
 	

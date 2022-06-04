@@ -1,6 +1,8 @@
 function circulant_matrix =  block_circulant(tmatrix, tsize)
 	
-	assert(isequal(tsize', tsize(:)));	  
+	% assert(isequal(tsize', tsize(:)));	 
+
+	assert(numel(tsize) == 1); 
 	assert(isequal(class(tmatrix), 'double'));
 		
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);

@@ -1,5 +1,8 @@
 function block_column = unfold(tmatrix, tsize)
-	assert(isequal(tsize', tsize(:)));	  
+	% assert(isequal(tsize', tsize(:)));	  
+	
+	assert(numel(tsize) == 1);
+
 	assert(isequal(class(tmatrix), 'double'));	
 
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);
@@ -17,6 +20,6 @@ function block_column = unfold(tmatrix, tsize)
 	tmatrix = permute(tmatrix, [2, 3, 1]);
 
 
-	block_column = get_block_column(tmatrix)
+	block_column = get_block_column(tmatrix);
 
 end

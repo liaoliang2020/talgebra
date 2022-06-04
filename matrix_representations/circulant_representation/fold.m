@@ -1,5 +1,8 @@
 function tmatrix = fold(block_column, tsize)
-	assert(isequal(tsize', tsize(:)));	  
+	% assert(isequal(tsize', tsize(:)));	  
+
+	assert(numel(tsize) == 1);
+	
 	assert(isequal(class(block_column), 'double'));
 	assert(ndims(block_column) == 2);
 	assert(mod(size(block_column, 1), prod(tsize)) == 0);

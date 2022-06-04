@@ -1,6 +1,9 @@
 function tmatrix = inv_block_circulant(circulant_matrix, tsize)
 	
-	assert(isequal(tsize', tsize(:)));	  
+	% assert(isequal(tsize', tsize(:)));	  
+
+	assert(numel(tsize) == 1);
+	
 	assert(isequal(class(circulant_matrix), 'double'));	
 
 	assert(ndims(circulant_matrix) == 2);

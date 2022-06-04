@@ -1,4 +1,8 @@
-function circulant_matrix =  bcirc(tmatrix, tsize)
+function circulant_matrix =  mybcirc(tmatrix, tsize)
+	
+	assert(isequal(class(tmatrix), 'double'));
+	
+	
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);
 
@@ -17,12 +21,12 @@ function circulant_matrix =  bcirc(tmatrix, tsize)
 
 	index_set = 1: prod(tsize);
 	for k = 0: (prod(tsize) - 1)
-		index_set = circshift(index_set, k);
+		index_se_shift = circshift(index_set, k);
 
 		index1 = k * col_num + 1;
 		index2 = (k + 1) * col_num;
 
-		circulant_matrix(:, index1: index2) = get_two_dimension_array(tmatrix(:, :, index_set));
+		circulant_matrix(:, index1: index2) = get_two_dimension_array(tmatrix(:, :, index_se_shift));
 	end
 
 

@@ -1,4 +1,6 @@
 function tvector = vector2tvector_directsum(vector, tsize)
+	assert(isequal(class(tmatrix), 'double'));
+
 	assert(isequal(tsize', tsize(:)));	 
 	assert(numel(size(vector)) == 2);
 	assert(size(vector, 2) == 1);
@@ -12,9 +14,7 @@ function tvector = vector2tvector_directsum(vector, tsize)
 	for i = 1: K
 		row_index1 = (i - 1) * row_num + 1;
 		row_index2 = row_index1 + row_num - 1;
-		temp = vector(row_index1: row_index2); 	
-		
-		matrix(row_index1: row_index2, i) = temp;	
+		matrix(row_index1: row_index2, i) = vector(row_index1: row_index2); 
 
 	end
 

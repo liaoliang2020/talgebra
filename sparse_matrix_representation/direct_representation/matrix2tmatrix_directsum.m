@@ -1,5 +1,7 @@
 function tmatrix = matrix2tmatrix_directsum(matrix, tsize)
 	% This function returns the tmatrix represented by a direct sum matrix
+	assert(isequal(class(tmatrix), 'double'));
+	
 	assert(isequal(tsize', tsize(:)));
 	assert(numel(size(matrix)) == 2);
 

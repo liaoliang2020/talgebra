@@ -50,7 +50,7 @@ function [tmatrix_with_low_rank, sparse_tmatrix] = trpca(tmatrix, lambda, tsize,
 	S = zeros(size(tmatrix));
 	Y = zeros(size(tmatrix));
 
-	for iter = 1 : max_iteration_num
+	for iter = 1: max_iteration_num
 		L_old = L;
   		S_old = S;
   		Y_old = Y;
@@ -82,7 +82,7 @@ function [tmatrix_with_low_rank, sparse_tmatrix] = trpca(tmatrix, lambda, tsize,
     		break;
     	end
 
-	end%for iter = 1 : max_iteration_num
+	end%for iter = 1: max_iteration_num
 
 	tmatrix_with_low_rank = L;
 	sparse_tmatrix = tmatrix - tmatrix_with_low_rank;

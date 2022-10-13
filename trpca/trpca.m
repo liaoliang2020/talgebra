@@ -1,6 +1,13 @@
 function [tmatrix_with_low_rank, sparse_tmatrix] = trpca(tmatrix, lambda, tsize, opts)
-	assert(nargin == 4);
+	% This function generalize LU's 2020 TAMI paper "Tensor Robust Principal Component Analysis with a New Tensor Nuclear Norm" 
+	% when using higher-order t-scalars
 
+	% refrence: C. Lu, J. Feng, Y. Chen, W. Liu, Z. Lin and S. Yan, 
+	% "Tensor Robust Principal Component Analysis with a New Tensor Nuclear Norm," 
+	% in IEEE Transactions on Pattern Analysis and Machine Intelligence, 
+	% vol. 42, no. 4, pp. 925-938, 1 April 2020, doi: 10.1109/TPAMI.2019.2891760.
+
+	assert(nargin == 4);
 	assert(isequal(tsize', tsize(:)));	  
 	assert(ndims(tmatrix) - numel(tsize) == 2 | ndims(tmatrix) - numel(tsize) == 1| ndims(tmatrix) - numel(tsize) == 0);
 

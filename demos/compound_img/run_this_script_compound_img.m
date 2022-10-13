@@ -15,7 +15,7 @@ function run_this_script_compound_img
 	%mode = 'inception';	%Get inception neighborhood
 	%file_path = pwd; 		%file path where neighborhood files are stored
 	%layer_num = 2;			%number of neighorhood files. 
-	%get_pixel_central_inception_neighborhood(row_num, col_num, mode, file_path, layer_num)
+	%get_pixel_central_inception_neighborhood4_2Darray(row_num, col_num, mode, file_path, layer_num)
 	
 
 	canonical_img = imread('cameraman.tif');

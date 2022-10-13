@@ -10,7 +10,7 @@ function my_denoise001
 	% neighbrohood_mode = 'central';
 	neighbrohood_mode = 'inception';
 	layer_num = 1;
-	get_pixel_central_inception_neighborhood(row_num, col_num, neighbrohood_mode, current_dir, layer_num);
+	get_pixel_central_inception_neighborhood4_2Darray(row_num, col_num, neighbrohood_mode, current_dir, layer_num);
 
 
 

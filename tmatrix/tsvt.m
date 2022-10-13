@@ -16,8 +16,8 @@ function approximation_tmatrix = tsvt(tmatrix, tau, tsize)
 	% If tau is NOT t-scalar but a canonical scalar
 	% Then transform tau to a t-scalar
 	if ~isequal(size(tau), size(tsize)) & numel(tau) == 1
-		tau = [tau, zeros(1, numel(tsize) - 1) ];
-		tau = reshape(tau, size(tsize));
+		tau = [tau, zeros(1, prod(tsize) - 1) ];
+		tau = reshape(tau, tsize);
 	end
 
 	assert(is_nonnegative(tau));

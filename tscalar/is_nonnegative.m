@@ -4,12 +4,6 @@ function bool_result = is_nonnegative(tscalar)
 	% this function checks whether or not tscalar is a so-called nonnegative tscalar 
 
 
-	if ~istreal(tscalar)
-		bool_result = false;
-		return;
-	end
-
-
 	tscalar = fftn(tscalar);
 	residual = norm(reshape(abs(tscalar) - tscalar, 1, []));
 

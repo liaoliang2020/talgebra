@@ -1,6 +1,10 @@
 function get_pixel_central_inception_neighborhood4_3Darray(row_num, col_num, fra_num, mode, file_path, layer_num)
 	% this function creates the pixel neighborhood table and store the table to sompelace specified by argument path
 
+	% The neighboring information computed for a 3D array yields a table (too) big for a personal computer. 
+	% Thus, this function merely computes a one-layer neighboring table for typical 3D arrays. 
+
+
 	if nargin == 5
 		layer_num = 1;
 	end  

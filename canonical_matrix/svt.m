@@ -4,11 +4,7 @@ function approximate_matrix = svt(matrix, tau)
 	assert(ismatrix(matrix) & isscalar(tau));
 	assert(tau >= 0);
 	[U, S, V] = svd(matrix, 'econ');
-	S = S - tau;
-	pos = find(S <= 0);
-	S(pos) = 0;
-
-	% S = wthresh(S, 's', tau);  
+	S = max(0, S - tau);
 
 	approximate_matrix = U * S * V';
 end

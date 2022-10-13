@@ -1,7 +1,7 @@
 function approximation_tmatrix = tsvt(tmatrix, tau, tsize)
 	
 	% this function computes the generalized Singular Value Thresholding of a t-matrix
-	% tau is a nonnegative t-sclalar 
+	% tau is a nonnegative t-sclalar or a nonnegative real number
 	% created by liaoliang 20190121
 
 	assert(isequal(tsize', tsize(:)));	  

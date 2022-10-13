@@ -44,10 +44,9 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode, file_p
 	
 	%----------------
 	% first layer
+	
 	linear_index = 0;
 	for i = 1: prod([row_num, col_num])
-		
-		
 		fprintf('layer = %d \t index = %d \n', 1, i);
 
 		[x, y] = ind2sub([row_num, col_num], i);
@@ -147,8 +146,8 @@ function get_pixel_central_inception_neighborhood(row_num, col_num, mode, file_p
 		
 
 		fprintf('layer = %d \t index = %d \n', 3, i);
-		for delta2 = [-1, 0, 1]
-			for delta1 = [-1, 0, 1]
+		for delta2 = delta_pool
+			for delta1 = delta_pool
 				index = index + 1;
 				neighorhood_layer003(:, index) = double(neighorhood_layer002(:, i)) + [delta1; delta2];	
 

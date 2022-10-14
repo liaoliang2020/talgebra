@@ -4,12 +4,15 @@ function result = iqfourier_matrix(n, quaternionic_square_root_of_negative_one)
 	assert(isscalar(n));
 	assert(n > 0);
 
+	%------------------------------
 	if nargin == 1
-		quaternionic_square_root_of_negative_one = sqrt(-1);
+		% quaternionic_square_root_of_negative_one = sqrt(-1);
+		quaternionic_square_root_of_negative_one = quaternion([0 1 1 1] / sqrt(3));  
 	end
 
+
 	assert(numel(quaternionic_square_root_of_negative_one) == 1);
-	
+
 	%--------------------
 	switch class(quaternionic_square_root_of_negative_one)
 		case 'double'
@@ -17,6 +20,7 @@ function result = iqfourier_matrix(n, quaternionic_square_root_of_negative_one)
 			quaternionic_square_root_of_negative_one = quaternionize(quaternionic_square_root_of_negative_one);
 		case 'quaternion'			
 			% do nothing
+			;
 		otherwise
 			assert(false);
 	end

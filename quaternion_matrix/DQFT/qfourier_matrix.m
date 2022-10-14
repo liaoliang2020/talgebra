@@ -4,12 +4,9 @@ function qfourier_matrix_result = qfourier_matrix(n, quaternionic_square_root_of
 	assert(n > 0);
 
 	%------------------------------
-	% when the argument "quaternionic_square_root_of_negative_one" is missing, 
-	% qfourier_matrixre will returns the trandtional fourier matrix but in quaternionic 
-	% matrix   
-
 	if nargin == 1
-		quaternionic_square_root_of_negative_one = sqrt(-1);
+		quaternionic_square_root_of_negative_one = quaternion([0 1 1 1] / sqrt(3));  
+
 	end
 
 	assert(numel(quaternionic_square_root_of_negative_one) == 1);
@@ -21,6 +18,7 @@ function qfourier_matrix_result = qfourier_matrix(n, quaternionic_square_root_of
 			quaternionic_square_root_of_negative_one = quaternionize(quaternionic_square_root_of_negative_one);
 		case 'quaternion'			
 			% do nothing
+			;			
 		otherwise
 			assert(false);
 	end

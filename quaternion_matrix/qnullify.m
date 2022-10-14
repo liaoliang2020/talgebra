@@ -1,5 +1,5 @@
 function result = qnullify(qarray, eps)
-	% this function nullifiies each quaternion entity whose norm is less than eps
+	% this function nullifiies each quaternion entity whose norm is small enough
 
 	if nargin == 1
 		eps = 1e-6;

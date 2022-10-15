@@ -1,4 +1,12 @@
 function tensor_product = tensormultiplication(standard_matrix, tensor, mod_k)
+	% this function computes the multi-mode multiplication 
+	% of a canonical tensor or a quaternionic tensor
+	% this function is revised by liaoliang on 2022/10/15
+	
+	assert(isequal(class(standard_matrix), class(tensor)));
+	assert(isequal(class(standard_matrix), 'double') | isequal(class(standard_matrix), 'quaternion'));
+	
+	
 	assert(ismatrix(standard_matrix));
 	%assert(isnumeric(tensor) & ~ismatrix(tensor));
 	assert(ismember(mod_k, 1: ndims(tensor) ));
@@ -8,7 +16,14 @@ function tensor_product = tensormultiplication(standard_matrix, tensor, mod_k)
 	tensor_size = size(tensor);
 	tensor_size(mod_k) = size(standard_matrix, 1);
 	
-	tensor_product = standard_matrix * tensorfactorkflattening(tensor, mod_k);		
+	switch class(standard_matrix)
+		case 'double'
+			tensor_product = standard_matrix * tensorfactorkflattening(tensor, mod_k);					
+		case 'quaternion'
+			tensor_product = qmatrix_multiplication(standard_matrix, tensorfactorkflattening(tensor, mod_k));	
+		otherwise
+			assert(false);
+	end
 
 	pos = 1: order_num;
 	pos(mod_k) = [];

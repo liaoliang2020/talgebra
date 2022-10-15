@@ -1,4 +1,4 @@
-function result = iqfourier_matrix(n, quaternionic_square_root_of_negative_one)
+function result = qifourier_matrix(n, quaternionic_square_root_of_negative_one)
 	% this function returns the nxn inverse quaternionic Fourier matrix
 
 	assert(isscalar(n));

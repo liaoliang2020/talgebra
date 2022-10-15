@@ -7,7 +7,7 @@ function result = qifourier_matrix(n, quaternionic_square_root_of_negative_one)
 	%------------------------------
 	if nargin == 1
 		% quaternionic_square_root_of_negative_one = sqrt(-1);
-		quaternionic_square_root_of_negative_one = quaternion([0 1 1 1] / sqrt(3));  
+		quaternionic_square_root_of_negative_one = quaternion([0 1 1 1] / norm([1 1 1]) );  
 	end
 
 

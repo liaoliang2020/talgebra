@@ -1,4 +1,4 @@
-function real_matrix = qmatrix2realmatrxi(qmatrix)
+function real_matrix = qmatrix2realmatrix(qmatrix)
 	% this function returns the real matrix representation of a quaternion matrix
 
 	assert(isequal(class(qmatrix), 'quaternion' ));
@@ -22,4 +22,4 @@ function real_matrix = qmatrix2realmatrxi(qmatrix)
 		end%for j = 1: col_num
 	end%for i = 1: row_num
 
-end%function real_matrix = qmatrix2realmatrxi(qmatrix)
+end%function real_matrix = qmatrix2realmatrix(qmatrix)

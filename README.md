@@ -1,4 +1,3 @@
-# talgebra by Liang Liao (liaoliang@ieee.org, liaoliangis@126.com) and Stephen John Maybank (sjmaybank@dcs.bbk.ac.uk). 
 Three papers on the t-algebra, t-scalars, and t-matrices, even generalized tensors, are given. 
 
 (1) https://arxiv.org/abs/2001.11708  Generalized Visual Information Analysis via Tensorial Algebra 

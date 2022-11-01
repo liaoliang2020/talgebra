@@ -9,6 +9,10 @@ function result = qmatrix_multiplication_arg3(qmatrix1, qmatrix2, qmatrix3)
 	assert(numel(size(qmatrix3)) == 2 );
 		
 	result = qmatrix2matrix(qmatrix1) * qmatrix2matrix(qmatrix2) * qmatrix2matrix(qmatrix3);
+	
+	% the following line is added by liaoliang on 20221027
+	% result(abs(result) < 1e-6) = 0;
+
 	result = matrix2qmatrix(result);
 	
 	%----------------

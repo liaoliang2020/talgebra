@@ -1,4 +1,4 @@
-function qmatrix = complex_matrix2qmatrix(matrix)
+function qmatrix = matrix2qmatrix(matrix)
 	% this return the qmatrix represented by a complex matrix.  
 
 	assert(numel(size(matrix)) <= 2);

@@ -1,4 +1,4 @@
-function matrix = qmatrix2complex_matrix(qmatrix)
+function matrix = qmatrix2matrix(qmatrix)
 	% this function returns the complex matrix representation of a qmatrix
 	% the returned complex matrix is of two size  of the input qmatrix
 	

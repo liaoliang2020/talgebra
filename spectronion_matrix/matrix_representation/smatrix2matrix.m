@@ -1,4 +1,4 @@
-function [qmatrix, complex_matrix, real_matrix] = smatrix2matrix(smatrix, tsize)
+function [qmatrix, complex_matrix, real_matrix, quaternion_slice_container, complex_slice_container, real_slice_container] = smatrix2matrix(smatrix, tsize)
 	% this function get matrix representations of a spectronion matrix
 
 	assert(isequal(class(smatrix), 'quaternion'));
@@ -19,16 +19,25 @@ function [qmatrix, complex_matrix, real_matrix] = smatrix2matrix(smatrix, tsize)
 
 	smatrix = reshape(smatrix, [prod(tsize), row_num, col_num] );
 
+	%--------------------------
+	quaternion_slice_container = quaternion();
+	complex_slice_container = [];
+	real_slice_container = [];
+	%--------------------------
+
 	real_matrix = [];
 	complex_matrix = [];
 	qmatrix = quaternion();
 	for slice_index = 1: prod(tsize)
 		quaternion_slice = smatrix(slice_index, :, :);
 		quaternion_slice = reshape(quaternion_slice, [row_num, col_num]);
-		
 		complex_slice = qmatrix2matrix(quaternion_slice);
 		real_slice  = qmatrix2realmatrix(quaternion_slice);
 
+		%-------------------
+		quaternion_slice_container = [quaternion_slice_container, quaternion_slice(:)];
+		complex_slice_container = [complex_slice_container, complex_slice(:)];
+		real_slice_container = [real_slice_container, real_slice(:)];
 
 		%-------
 		qmatrix = my_blkdiag(qmatrix, quaternion_slice);
@@ -38,6 +47,10 @@ function [qmatrix, complex_matrix, real_matrix] = smatrix2matrix(smatrix, tsize)
 		real_matrix =  blkdiag(real_matrix, real_slice);
 
 	end%for slice_index = 1: prod(tsize)
+
+	quaternion_slice_container = reshape(quaternion_slice_container, [row_num, col_num, prod(tsize)]);
+	complex_slice_container = reshape(complex_slice_container, [2 * row_num, 2 * col_num, prod(tsize) ]);
+	real_slice_container = reshape(real_slice_container, [4 * row_num, 4 * col_num, prod(tsize) ]);
 
 end
 

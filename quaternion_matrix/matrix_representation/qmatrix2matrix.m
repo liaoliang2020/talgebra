@@ -9,7 +9,7 @@ function matrix = qmatrix2matrix(qmatrix)
 	col_num = size(qmatrix, 2);
 
 	qmatrix = compact(qmatrix);
-	assert(size(qmatrix, 2) == 4);
+	
 
 	Q1 = qmatrix(:, 1) + i * qmatrix(:, 2);
 	Q1 = reshape(Q1, row_num, col_num);

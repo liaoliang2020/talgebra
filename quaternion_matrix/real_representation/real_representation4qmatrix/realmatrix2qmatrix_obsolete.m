@@ -19,24 +19,7 @@ function qmatrix = realmatrix2qmatrix(realmatrix)
 			col_index1 = (j - 1) * 4 + 1;
 			col_index2 = col_index1 + 4 - 1;
 
-			sub_real_matrix = realmatrix(row_index1: row_index2, col_index1: col_index2);	
-
-			r1 = sub_real_matrix(1, :) .* [1 -1 1 -1];
-			%----
-			r2 = sub_real_matrix(2, :);  
-			r2 = r2([2 1 4 3]);  
-			%----
-			r3 = sub_real_matrix(3, :) .* [-1 -1 1 1];
-			r3 = r3([3 4 1 2]);  
-			%----
-			r4 = sub_real_matrix(4, :) .* [1 -1 -1 1];
-			r4 = r4([4 3 2 1]);
-
-			assert(max([norm(r1 - r2), norm(r1 - r3), norm(r1 - r4)] ) < 1e-6);
-			
-			qmatrix(i, j) = quaternion(r1);
-
-			% qmatrix(i, j) =  realmatrix2qscalar(realmatrix(row_index1: row_index2, col_index1: col_index2) );   
+			qmatrix(i, j) =  realmatrix2qscalar(realmatrix(row_index1: row_index2, col_index1: col_index2) );   
 		end
 	end
 

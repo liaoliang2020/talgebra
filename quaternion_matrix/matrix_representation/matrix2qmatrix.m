@@ -1,7 +1,8 @@
 function qmatrix = matrix2qmatrix(matrix)
 	% this return the qmatrix represented by a complex matrix.  
 
-	assert(numel(size(matrix)) <= 2);
+	assert(isequal(class(matrix), 'double'));
+	assert(ndims(matrix) == 2);
 
 	row_num = size(matrix, 1);
 	col_num = size(matrix, 2);
@@ -12,13 +13,33 @@ function qmatrix = matrix2qmatrix(matrix)
 	row_num = row_num / 2;
 	col_num = col_num / 2;	 
 
-	Q1 = matrix(1: row_num, 1: col_num);
-	Q2 = matrix(1: row_num, (col_num + 1): (2* col_num));
+	qmatrix = zeros(row_num, col_num);
+	qmatrix = quaternionize(qmatrix);
 
-	assert(norm(conj(Q2) * (-1) - matrix((row_num + 1): end, 1: col_num ), 'fro') < 1e-5);
-	assert(norm(conj(Q1) - matrix((row_num + 1): end, (col_num + 1): end), 'fro') < 1e-5);
+	for row_index = 1: row_num
+		for col_index = 1: col_num
+			row_begin = (row_index - 1) * 2 + 1;
+			row_end   = row_begin + 1;
 
-	qmatrix = quaternion(real(Q1), imag(Q1), real(Q2), imag(Q2));
+			col_begin = (col_index - 1) * 2 + 1;
+			col_end =  col_begin + 1;
 
+			complex_matrix_block = matrix(row_begin: row_end, col_begin: col_end); 
+			r1 = complex_matrix_block(1, :); 
+			r2 = complex_matrix_block(2, :); 
+			r2 = r2 .* [-1 1]; 
+			r2 = conj(r2([2 1])); 
+			
+			assert(norm(r1 - r2) < 1e-6); 
+			x1 = r1(1); 
+			x2 = r1(2); 
+
+			qmatrix(row_index, col_index) = quaternion([real(x1), imag(x1), real(x2), imag(x2)]);
+
+		end%for col_index = 1: col_num
+	end%for row_index = 1: row_num
+
+
+	
 end
 

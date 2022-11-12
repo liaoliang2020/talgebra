@@ -8,49 +8,25 @@ function matrix = qmatrix2matrix(qmatrix)
 	row_num = size(qmatrix, 1);
 	col_num = size(qmatrix, 2);
 
-	qmatrix = compact(qmatrix);
-	
-
-	Q1 = qmatrix(:, 1) + i * qmatrix(:, 2);
-	Q1 = reshape(Q1, row_num, col_num);
-
-	Q2 = qmatrix(:, 3) + i * qmatrix(:, 4);
-	Q2 = reshape(Q2, row_num, col_num);	
-
 	matrix = zeros(2 * [row_num, col_num] );
 
-	index = 0;
-	
-	for j = 1: 2  			%column index
-		for k = 1: 2      	%row index
-			index = index + 1;
+	for row_index = 1: row_num
+		for col_index = 1: col_num
+			x = qmatrix(row_index, col_index);
+			x = compact(x);
+			x1 = sum(x(1:2) .* [1 i]);
+			x2 = sum(x(3:4) .* [1 i]);
 
-			row_index1 = (k - 1) * row_num + 1;
-			row_index2 = row_index1 + row_num - 1;
-			
-			col_index1 = (j - 1) * col_num + 1;
-			col_index2 = col_index1 + col_num - 1;
+			row_begin = (row_index - 1) * 2 + 1;
+			row_end   = row_begin + 1;
 
+			col_begin = (col_index - 1) * 2 + 1;
+			col_end   = col_begin + 1;
 
-			switch index
-				case 1   
-				 	matrix(row_index1: row_index2, col_index1: col_index2) = Q1;
-				case 2
-					matrix(row_index1: row_index2, col_index1: col_index2) = -conj(Q2);
-				case 3
-					matrix(row_index1: row_index2, col_index1: col_index2) = Q2;
-				case 4
-					matrix(row_index1: row_index2, col_index1: col_index2) = conj(Q1);
-				otherwise
-					assert(false);
-			end%switch index		 
-		
+			matrix(row_begin: row_end, col_begin: col_end) = [x1 x2; -conj(x2) conj(x1)]; 
 
-		end%for k = 1: 2
-	end%for j = 1: 2
-	
-	
-	
+		end%for col_index = 1: col_num
+	end%for row_index = 1: row_num
 
 
 end

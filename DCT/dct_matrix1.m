@@ -1,5 +1,6 @@
 function transform_matrix = dct_matrix1(N)
-	assert(N > 1);
+	
+ 	assert(N > 1);
 	assert(uint64(N) ==  N);
 
 	matrix =  transpose(0: (N - 1)) * (0: (N - 1));

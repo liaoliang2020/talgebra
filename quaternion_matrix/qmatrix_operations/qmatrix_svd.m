@@ -7,7 +7,8 @@ function [QU, QS, QV] = qmatrix_svd(qmatrix, K)
 	row_num = size(qmatrix, 1);
 	col_num = size(qmatrix, 2);
 	
-	
+	% When the argmennt K is given, it indicates qmatrix is given as a direct sum of matrices. 
+	% then the result of SVD of qmatrix is also given as direct sums of matrices. 
 	if nargin == 2
 		
 		assert(is_direct_sum(qmatrix, K));	
